@@ -5782,7 +5782,8 @@
 							<div class="elementor-widget-container">
 								<div class="elementor-button-wrapper">
 									<a class="elementor-button elementor-button-link elementor-size-sm"
-										href="https://www.google.com/maps/search/SMK+Tri+Karya+Utama+Bandar+Lampung" target="_blank">
+										href="https://www.google.com/maps/search/SMK+Tri+Karya+Utama+Bandar+Lampung"
+										target="_blank">
 										<span class="elementor-button-content-wrapper">
 											<span class="elementor-button-text">Google Maps</span>
 										</span>
@@ -6344,9 +6345,7 @@
 
 
 									<audio id="song" loop="">
-										<source
-											src="https://kaliefinvitation.com/wp-content/uploads/2024/12/Lana-Del-Rey-Young-And-Beautiful-Lyrics.mp3"
-											type="audio/mp3">
+										<source src="./assets/Bruno Mars - Risk It All.mp3" type="audio/mp3">
 									</audio>
 
 
@@ -6460,7 +6459,7 @@
 					all: unset!important;
 				} */
 								</style>
-								<div class="modalx removeModals" data-sampul="./assets/images/hero.jpg"
+								<div class="modalx" data-sampul="./assets/images/hero.jpg"
 									style="background-image: url(./assets/images/hero.jpg) !important;">
 
 									<div class="overlayy"></div>
@@ -6511,6 +6510,7 @@
 
 										// Ensure the Open Invitation button works
 										$('.wdp-button-wrapper button, #wdp-button-wrapper button').on('click', function () {
+											$('.modalx').addClass('removeModals');
 											$('.modalx').fadeOut();
 											$('body').css('overflow', 'auto');
 										});
