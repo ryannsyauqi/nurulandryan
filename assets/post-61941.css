@@ -171,6 +171,7 @@ border-radius: 5px 5px 5px 5px;
 /* Increase 'Dear' font size and family on cover to match 'The Wedding Of' */
 .elementor-61941 .elementor-element.elementor-element-7a7f03e .wdp-dear {
     font-family: "Rosemary-jasmine", Sans-serif !important;
-    font-size: 48px !important;
-    margin-bottom: 10px;
+    font-size: 50px !important;
+    margin-bottom: 20px !important;
+    line-height: 1.2 !important;
 }

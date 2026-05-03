@@ -3421,7 +3421,15 @@
 	<link rel="stylesheet" id="widget-form-css" href="./assets/widget-form.min.css" media="all">
 	<link rel="stylesheet" id="widget-social-icons-css" href="./assets/widget-social-icons.min.css" media="all">
 	<link rel="stylesheet" id="e-apple-webkit-css" href="./assets/custom-apple-webkit.min.css" media="all">
-	<link rel="stylesheet" id="elementor-post-61941-css" href="./assets/post-61941.css?v=3" media="all">
+	<link rel="stylesheet" id="elementor-post-61941-css" href="./assets/post-61941.css?v=10" media="all">
+	<style>
+		body.lock-scroll {
+			overflow: hidden !important;
+			height: 100vh !important;
+			width: 100vw !important;
+			position: fixed !important;
+		}
+	</style>
 	<link rel="stylesheet" id="elementor-gf-local-roboto-css" href="./assets/roboto.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-robotoslab-css" href="./assets/robotoslab.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-cormorantupright-css" href="./assets/cormorantupright.css"
@@ -6506,12 +6514,13 @@
 										}
 
 										// Force scrollable if requested
-										$('body').css('overflow', 'hidden');
+										$('body').addClass('lock-scroll');
 
 										// Ensure the Open Invitation button works
 										$('.wdp-button-wrapper button, #wdp-button-wrapper button').on('click', function () {
 											$('.modalx').addClass('removeModals');
 											$('.modalx').fadeOut();
+											$('body').removeClass('lock-scroll');
 											$('body').css('overflow', 'auto');
 										});
 									});
