@@ -150,3 +150,13 @@ border-radius: 5px 5px 5px 5px;
 .cui-wrap-link {
     display: none !important;
 }
+
+/* Custom Overrides for Readability & Aesthetics */
+.elementor-element-fe979c0::before {
+    background-color: rgba(0, 0, 0, 0.75) !important; /* Darker background for QS Ar Rum */
+}
+
+.elementor-element-e91f439::before, 
+.elementor-element-5301a50::before {
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%) !important; /* Full subtle gradient for Bride/Groom */
+}
