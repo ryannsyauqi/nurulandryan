@@ -6533,7 +6533,10 @@
 										// Ensure the Open Invitation button works
 										$('.wdp-button-wrapper button, #wdp-button-wrapper button').on('click', function () {
 											$('.modalx').addClass('removeModals');
-											$('.modalx').fadeOut();
+											// Wait for CSS transition (1.2s) to finish before hiding
+											setTimeout(function() {
+												$('.modalx').hide();
+											}, 1200);
 											$('body').removeClass('lock-scroll');
 											$('body').css('overflow', 'auto');
 										});
