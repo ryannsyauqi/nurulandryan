@@ -167,3 +167,8 @@ border-radius: 5px 5px 5px 5px;
 .elementor-61941 .elementor-element.elementor-element-684dde2 .elementor-heading-title {
     line-height: 0.8 !important;
 }
+
+/* Increase 'Dear' font size on cover */
+.elementor-61941 .elementor-element.elementor-element-7a7f03e .wdp-dear {
+    font-size: 20px !important;
+}
