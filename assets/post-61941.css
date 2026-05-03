@@ -161,9 +161,9 @@ border-radius: 5px 5px 5px 5px;
     background-image: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%) !important; /* Full subtle gradient for Bride/Groom */
 }
 /* Tighten name line heights for mobile */
-.elementor-element-fe572e3 .elementor-heading-title,
-.elementor-element-0c5d2d1 .elementor-heading-title,
-.elementor-element-799dafa .elementor-heading-title,
-.elementor-element-684dde2 .elementor-heading-title {
-    line-height: 1 !important;
+.elementor-61941 .elementor-element.elementor-element-fe572e3 .elementor-heading-title,
+.elementor-61941 .elementor-element.elementor-element-0c5d2d1 .elementor-heading-title,
+.elementor-61941 .elementor-element.elementor-element-799dafa .elementor-heading-title,
+.elementor-61941 .elementor-element.elementor-element-684dde2 .elementor-heading-title {
+    line-height: 0.8 !important;
 }
