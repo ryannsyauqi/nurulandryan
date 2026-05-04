@@ -5027,6 +5027,14 @@
 			animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
 			backface-visibility: hidden;
 			will-change: transform, opacity;
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+
+		/* Prevent 'jump' by setting initial state for elements that WILL animate */
+		.elementor-element:not(.animated)[data-settings*="fadeInUp"] {
+			opacity: 0 !important;
+			transform: translate3d(0, 40px, 0) !important;
 		}
 
 		@keyframes fadeInUp {
