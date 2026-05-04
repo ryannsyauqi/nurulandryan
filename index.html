@@ -5021,29 +5021,15 @@
 	<link rel="prefetch" href="./assets/images/NR-281.jpg">
 	<link rel="prefetch" href="./assets/images/NR-338.jpg">
 	<style>
-		/* Custom Smooth Animation Overrides - Forced Priority */
-		.animated {
-			animation-duration: 1.5s !important;
-			animation-timing-function: cubic-bezier(0.2, 1, 0.3, 1) !important;
-			backface-visibility: hidden;
-			will-change: transform, opacity;
-		}
-
-		/* Sembunyikan elemen fadeInUp secara total sebelum scroll agar tidak 'kasar' */
-		.elementor-element[data-settings*="fadeInUp"]:not(.animated) {
-			opacity: 0 !important;
-			visibility: hidden !important;
-		}
-
-		@keyframes fadeInUp {
-			from {
-				opacity: 0;
-				transform: translate3d(0, 20px, 0);
-			}
-			to {
-				opacity: 1;
-				transform: translate3d(0, 0, 0);
-			}
+		/* Disable all animations and keep everything static as requested */
+		.elementor-element[data-settings*="animation"],
+		.animated,
+		.elementor-invisible {
+			animation: none !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			transform: none !important;
+			transition: none !important;
 		}
 
 		/* Gallery Lightbox Icon Fixes */
