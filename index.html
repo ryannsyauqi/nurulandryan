@@ -97,49 +97,7 @@
 			max-width: 100% !important;
 		}
 
-		/* Custom Smooth Animation Overrides */
-		.animated {
-			animation-duration: 1.5s !important;
-			animation-timing-function: cubic-bezier(0.2, 1, 0.3, 1) !important;
-		}
 
-		@keyframes fadeInUp {
-			from {
-				opacity: 0;
-				transform: translate3d(0, 30px, 0);
-			}
-			to {
-				opacity: 1;
-				transform: translate3d(0, 0, 0);
-			}
-		}
-
-		/* Gallery Lightbox Icon Fixes */
-		.elementor-swiper-button-prev::before,
-		.elementor-swiper-button-next::before {
-			font-family: "elementor-icons" !important;
-			font-size: 30px;
-			color: #fff;
-			text-shadow: 0 0 10px rgba(0,0,0,0.5);
-		}
-
-		.elementor-swiper-button-prev i,
-		.elementor-swiper-button-next i {
-			display: none !important;
-		}
-
-		/* If elementor icons still fail, use CSS arrows as fallback */
-		.elementor-swiper-button-prev:not(:has(::before))::after,
-		.elementor-swiper-button-next:not(:has(::before))::after {
-			content: '';
-			display: block;
-			width: 15px;
-			height: 15px;
-			border-left: 3px solid #fff;
-			border-bottom: 3px solid #fff;
-		}
-		.elementor-swiper-button-prev::after { transform: rotate(45deg); }
-		.elementor-swiper-button-next::after { transform: rotate(-135deg); }
 
 		#loading-screen,
 		.loading,
@@ -5062,6 +5020,54 @@
 	<link rel="prefetch" href="./assets/images/NR-166.jpg">
 	<link rel="prefetch" href="./assets/images/NR-281.jpg">
 	<link rel="prefetch" href="./assets/images/NR-338.jpg">
+	<style>
+		/* Custom Smooth Animation Overrides - Forced Priority */
+		.animated {
+			animation-duration: 1.2s !important;
+			animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0) !important;
+			backface-visibility: hidden;
+			will-change: transform, opacity;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translate3d(0, 40px, 0);
+			}
+			to {
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+		}
+
+		/* Gallery Lightbox Icon Fixes */
+		.elementor-swiper-button-prev::before,
+		.elementor-swiper-button-next::before {
+			font-family: "elementor-icons" !important;
+			font-size: 30px !important;
+			color: #fff !important;
+			display: inline-block !important;
+		}
+
+		.elementor-swiper-button-prev i,
+		.elementor-swiper-button-next i {
+			display: none !important;
+		}
+
+		/* CSS Fallback for arrows */
+		.elementor-swiper-button-prev::after,
+		.elementor-swiper-button-next::after {
+			content: '';
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-left: 3px solid #fff;
+			border-bottom: 3px solid #fff;
+			position: absolute;
+		}
+		.elementor-swiper-button-prev::after { transform: rotate(45deg); left: 20px; }
+		.elementor-swiper-button-next::after { transform: rotate(-135deg); right: 20px; }
+	</style>
 </head>
 
 <body
