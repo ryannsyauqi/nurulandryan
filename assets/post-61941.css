@@ -72,12 +72,12 @@ border-radius: 5px 5px 5px 5px;
     flex-shrink: 0;
 }
 .icon-mandiri {
-    background-color: #fff;
+    background-color: #003d79;
     background-image: url('../assets/images/logo-mandiri.svg');
     background-size: 80% auto;
 }
 .icon-bca {
-    background-color: #fff;
+    background-color: #0060ad;
     background-image: url('../assets/images/logo-bca.webp');
     background-size: 80% auto;
 }
