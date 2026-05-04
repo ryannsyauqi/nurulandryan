@@ -8,6 +8,7 @@
 	<title>Wedding Invitation - Nurul & Ryan</title>
 	<meta name="description" content="The Wedding of Nurul & Ryan">
 	<meta name="robots" content="noindex, nofollow">
+	<meta name="format-detection" content="telephone=no">
 
 	<style type="text/css">
 		/* Import Local Fonts */
@@ -6801,7 +6802,6 @@
 	<script src="./assets/share-link.min.js"></script>
 	<link rel="stylesheet" href="./assets/custom-lightbox.min.css"><svg style="display: none;"
 		class="e-font-icon-svg-symbols"></svg>
-	<div id="copy-toast">Rekening disalin</div>
 	<script>
 		function copyToClipboard(text, btn) {
 			const el = document.createElement('textarea');
@@ -6811,17 +6811,12 @@
 			document.execCommand('copy');
 			document.body.removeChild(el);
 
-			// Toast feedback
-			const toast = document.getElementById("copy-toast");
-			toast.className = "show";
-			setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
-
 			// Button feedback
-			const originalText = btn.innerHTML;
-			btn.innerHTML = "Tersalin!";
+			const originalHTML = btn.innerHTML;
+			btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
 			btn.classList.add('copied');
 			setTimeout(function () {
-				btn.innerHTML = originalText;
+				btn.innerHTML = originalHTML;
 				btn.classList.remove('copied');
 			}, 2000);
 		}
