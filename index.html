@@ -3401,7 +3401,8 @@
 		/*# sourceURL=cui_style-inline-css */
 	</style>
 	<link rel="stylesheet" id="wdp-icon-css" href="./assets/new-icon.min.css" media="all">
-	<link rel="stylesheet" id="elementor-icons-css" href="https://cdn.jsdelivr.net/npm/@elementor/icons@2.14.0/css/elementor-icons.min.css" media="all">
+	<link rel="stylesheet" id="elementor-icons-css"
+		href="https://cdn.jsdelivr.net/npm/@elementor/icons@2.14.0/css/elementor-icons.min.css" media="all">
 	<link rel="stylesheet" href="./assets/dialog.min.css">
 	<link rel="stylesheet" id="elementor-frontend-css" href="./assets/custom-frontend.min.css" media="all">
 	<link rel="stylesheet" id="elementor-post-6-css" href="./assets/post-6.css" media="all">
@@ -3452,10 +3453,12 @@
 				margin-bottom: 20px !important;
 				line-height: 1.0 !important;
 			}
+
 			.wdp-dear {
 				margin-top: 15px !important;
 				margin-bottom: 10px !important;
 			}
+
 			.wdp-name.namatamu {
 				margin-top: 5px !important;
 				margin-bottom: 25px !important;
@@ -5057,8 +5060,48 @@
 			border-bottom: 3px solid #fff;
 			position: absolute;
 		}
-		.elementor-swiper-button-prev::after { transform: rotate(45deg); left: 20px; }
-		.elementor-swiper-button-next::after { transform: rotate(-135deg); right: 20px; }
+
+		.elementor-swiper-button-prev::after {
+			transform: rotate(45deg);
+			left: 20px;
+		}
+
+		.elementor-swiper-button-next::after {
+			transform: rotate(-135deg);
+			right: 20px;
+		}
+
+		/* Fix Desktop Split Screen Cover */
+		@media (min-width: 1025px) {
+			/* Main Container */
+			.elementor-element-a04b1c9 {
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+			}
+
+			/* Left Fixed Panel */
+			.elementor-element-5f9df9e {
+				width: 50% !important;
+				position: fixed !important;
+				left: 0 !important;
+				top: 0 !important;
+				height: 100vh !important;
+				z-index: 10 !important;
+			}
+
+			/* Hide the sticky spacer to prevent double/overlapping text */
+			.elementor-element-5f9df9e.elementor-sticky__spacer {
+				display: none !important;
+			}
+
+			/* Right Scrollable Panel */
+			.elementor-element-5482976 {
+				width: 50% !important;
+				margin-left: 50% !important;
+				flex-grow: 1 !important;
+			}
+		}
 	</style>
 </head>
 
