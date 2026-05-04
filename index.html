@@ -6820,6 +6820,18 @@
 				btn.classList.remove('copied');
 			}, 2000);
 		}
+
+		// Handle Dynamic Guest Name from URL Parameter (?to=Name)
+		window.addEventListener('DOMContentLoaded', () => {
+			const urlParams = new URLSearchParams(window.location.search);
+			const guestName = urlParams.get('to');
+			if (guestName) {
+				const guestElements = document.querySelectorAll('.namatamu');
+				guestElements.forEach(el => {
+					el.innerText = guestName;
+				});
+			}
+		});
 	</script>
 </body>
 
