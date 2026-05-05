@@ -6824,14 +6824,16 @@
 		// ==========================================
 		// DYNAMIC GUEST LIST FROM GOOGLE SHEETS
 		// ==========================================
-		// Menggunakan endpoint gviz/tq yang lebih stabil untuk fetch data
-		const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1yQqFz-G_DoHKf84MNAn5rb6jNMxvevW5Du5XlfAZd6s/gviz/tq?tqx=out:csv&sheet=Undangan+Wedding';
+		const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1yQqFz-G_DoHKf84MNAn5rb6jNMxvevW5Du5XlfAZd6s/export?format=csv&sheet=Undangan+Wedding';
 
 		async function handleGuestName() {
 			const urlParams = new URLSearchParams(window.location.search);
 			let guestName = urlParams.get('to');
-			const path = window.location.pathname.replace(/^\/|\/$/g, '');
+			let path = window.location.pathname.replace(/^\/|\/$/g, '');
 			
+			// Jika path mengandung .html, bersihkan
+			path = path.replace('.html', '');
+
 			console.log('Path detected:', path);
 
 			// 1. Prioritas Utama: Parameter ?to=
@@ -6842,30 +6844,41 @@
 			}
 
 			// 2. Prioritas Kedua: Path URL (/slug)
-			if (path && path !== 'index.html' && !path.includes('.')) {
+			if (path && path !== 'index.html' && path !== '') {
 				try {
 					console.log('Fetching guest list from Google Sheets...');
 					const response = await fetch(SPREADSHEET_CSV_URL);
 					const data = await response.text();
 					
-					// Parsing CSV secara manual yang lebih kuat
-					const rows = data.split(/\r?\n/).map(row => {
-						return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
-					});
-
+					// Split rows and filter empty ones
+					const rows = data.split(/\r?\n/).filter(line => line.trim() !== '');
+					
 					const targetSlug = decodeURIComponent(path).toLowerCase().trim();
 					console.log('Searching for slug:', targetSlug);
 
-					// Cari di kolom B (Index 1)
-					const match = rows.find(row => {
-						return row[1] && row[1].toLowerCase().trim() === targetSlug;
-					});
+					let foundName = null;
 
-					if (match) {
-						guestName = match[0]; // Kolom A: Nama Lengkap
+					for (let row of rows) {
+						// Parsing CSV sederhana tapi kuat untuk Nama & Slug
+						// Mencari pola "Nama","Slug" atau Nama,Slug
+						const cols = row.split(',').map(c => c.replace(/^"|"$/g, '').trim());
+						
+						if (cols.length >= 2) {
+							const nameCol = cols[0];
+							const slugCol = cols[1];
+
+							if (slugCol.toLowerCase() === targetSlug) {
+								foundName = nameCol;
+								break;
+							}
+						}
+					}
+
+					if (foundName) {
+						guestName = foundName;
 						console.log('Match found in spreadsheet:', guestName);
 					} else {
-						console.log('No match in spreadsheet, using auto-format.');
+						console.log('No match in spreadsheet for slug:', targetSlug);
 						// Fallback: Ubah slug jadi Nama (deni-pambudi -> Deni Pambudi)
 						guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 					}
@@ -6886,16 +6899,12 @@
 			guestElements.forEach(el => {
 				el.innerText = name;
 			});
-			// Juga update title halaman jika perlu
 			document.title = "Undangan Pernikahan Nurul & Ryan - " + name;
 		}
 
-		// Jalankan saat DOM siap
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', handleGuestName);
-		} else {
-			handleGuestName();
-		}
+		// Jalankan
+		handleGuestName();
+
 
 
 
