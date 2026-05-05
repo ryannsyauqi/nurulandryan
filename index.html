@@ -6843,10 +6843,11 @@
 				try {
 					const response = await fetch(SPREADSHEET_CSV_URL);
 					const data = await response.text();
-					const rows = data.split('\n').map(row => {
+					const rows = data.split(/\r?\n/).map(row => {
 						// Simple CSV Parser (handle quotes)
 						return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
 					});
+
 
 					// Cari di kolom B (Slug)
 					const targetSlug = path.toLowerCase();
