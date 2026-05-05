@@ -6829,12 +6829,15 @@
 		async function handleGuestName() {
 			const urlParams = new URLSearchParams(window.location.search);
 			let guestName = urlParams.get('to');
-			let path = window.location.pathname.replace(/^\/|\/$/g, '');
+			let path = window.location.pathname.replace(/^\/|\/$/g, '').replace('.html', '');
 			
-			// Jika path mengandung .html, bersihkan
-			path = path.replace('.html', '');
+			// Cek apakah ada slug di query string (contoh: /?berlian-kellin)
+			let querySlug = window.location.search.replace('?', '').split('&')[0];
+			// Jika querySlug mengandung '=', berarti itu parameter biasa (seperti ?to=), abaikan
+			if (querySlug.includes('=')) querySlug = null;
 
 			console.log('Path detected:', path);
+			console.log('Query slug detected:', querySlug);
 
 			// 1. Prioritas Utama: Parameter ?to=
 			if (guestName) {
@@ -6843,34 +6846,24 @@
 				return;
 			}
 
-			// 2. Prioritas Kedua: Path URL (/slug)
-			if (path && path !== 'index.html' && path !== '') {
+			// 2. Prioritas Kedua: Path (/slug) atau Query Slug (/?slug)
+			const targetSlug = decodeURIComponent(querySlug || path).toLowerCase().trim();
+
+			if (targetSlug && targetSlug !== 'index.html' && targetSlug !== '') {
 				try {
 					console.log('Fetching guest list from Google Sheets...');
 					const response = await fetch(SPREADSHEET_CSV_URL);
 					const data = await response.text();
 					
-					// Split rows and filter empty ones
 					const rows = data.split(/\r?\n/).filter(line => line.trim() !== '');
-					
-					const targetSlug = decodeURIComponent(path).toLowerCase().trim();
 					console.log('Searching for slug:', targetSlug);
 
 					let foundName = null;
-
 					for (let row of rows) {
-						// Parsing CSV sederhana tapi kuat untuk Nama & Slug
-						// Mencari pola "Nama","Slug" atau Nama,Slug
 						const cols = row.split(',').map(c => c.replace(/^"|"$/g, '').trim());
-						
-						if (cols.length >= 2) {
-							const nameCol = cols[0];
-							const slugCol = cols[1];
-
-							if (slugCol.toLowerCase() === targetSlug) {
-								foundName = nameCol;
-								break;
-							}
+						if (cols.length >= 2 && cols[1].toLowerCase() === targetSlug) {
+							foundName = cols[0];
+							break;
 						}
 					}
 
@@ -6879,13 +6872,11 @@
 						console.log('Match found in spreadsheet:', guestName);
 					} else {
 						console.log('No match in spreadsheet for slug:', targetSlug);
-						// Fallback: Ubah slug jadi Nama (deni-pambudi -> Deni Pambudi)
 						guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 					}
 				} catch (error) {
 					console.error('Error fetching guest list:', error);
-					// Fallback jika fetch gagal
-					guestName = decodeURIComponent(path).replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+					guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 				}
 			}
 
@@ -6893,6 +6884,7 @@
 				updateGuestUI(guestName);
 			}
 		}
+
 
 		function updateGuestUI(name) {
 			const guestElements = document.querySelectorAll('.namatamu');
