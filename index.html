@@ -6821,17 +6821,67 @@
 			}, 2000);
 		}
 
-		// Handle Dynamic Guest Name from URL Parameter (?to=Name)
-		window.addEventListener('DOMContentLoaded', () => {
+		// ==========================================
+		// DYNAMIC GUEST LIST FROM GOOGLE SHEETS
+		// ==========================================
+		const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1yQqFz-G_DoHKf84MNAn5rb6jNMxvevW5Du5XlfAZd6s/export?format=csv&sheet=Undangan+Wedding';
+
+		async function handleGuestName() {
 			const urlParams = new URLSearchParams(window.location.search);
-			const guestName = urlParams.get('to');
+			let guestName = urlParams.get('to');
+			const path = window.location.pathname.replace(/^\/|\/$/g, '');
+			const guestElements = document.querySelectorAll('.namatamu');
+
+			// 1. Jika ada di parameter ?to (Prioritas Utama)
 			if (guestName) {
-				const guestElements = document.querySelectorAll('.namatamu');
-				guestElements.forEach(el => {
-					el.innerText = guestName;
-				});
+				updateGuestUI(guestName);
+				return;
 			}
-		});
+
+			// 2. Jika ada path (/slug), tarik data dari Google Sheets
+			if (path && path !== 'index.html' && !path.includes('.')) {
+				try {
+					const response = await fetch(SPREADSHEET_CSV_URL);
+					const data = await response.text();
+					const rows = data.split('\n').map(row => {
+						// Simple CSV Parser (handle quotes)
+						return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(cell => cell.replace(/^"|"$/g, '').trim());
+					});
+
+					// Cari di kolom B (Slug)
+					const targetSlug = path.toLowerCase();
+					const match = rows.find(row => row[1] && row[1].toLowerCase() === targetSlug);
+
+					if (match) {
+						guestName = match[0]; // Ambil Kolom A (Nama Lengkap)
+					} else {
+						// Fallback Auto-Format jika tidak ketemu di sheet
+						guestName = decodeURIComponent(path).replace(/-/g, ' ');
+						guestName = guestName.replace(/\b\w/g, l => l.toUpperCase());
+					}
+				} catch (error) {
+					console.error('Gagal mengambil data tamu:', error);
+					// Fallback jika fetch gagal
+					guestName = decodeURIComponent(path).replace(/-/g, ' ');
+					guestName = guestName.replace(/\b\w/g, l => l.toUpperCase());
+				}
+			}
+
+			if (guestName) {
+				updateGuestUI(guestName);
+			}
+		}
+
+		function updateGuestUI(name) {
+			const guestElements = document.querySelectorAll('.namatamu');
+			guestElements.forEach(el => {
+				el.innerText = name;
+			});
+		}
+
+		window.addEventListener('DOMContentLoaded', handleGuestName);
+
+
 	</script>
 </body>
 
