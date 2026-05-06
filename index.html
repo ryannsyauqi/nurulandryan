@@ -3448,6 +3448,70 @@
 			text-transform: none !important;
 		}
 
+		/* Subtle Scroll Indicator */
+		.scrolldown-wrapper {
+			position: absolute;
+			bottom: 40px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			color: #ffffff;
+			opacity: 0;
+			z-index: 100;
+			pointer-events: none;
+			animation: scrollFadeInUp 1.2s ease-out 2s both;
+		}
+
+		.scrolldown-text {
+			font-size: 11px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+			margin-bottom: 12px;
+			font-family: 'Jost', sans-serif !important;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+		}
+
+		.scrolldown-icon {
+			font-size: 18px;
+			animation: scrollBounce 2s infinite;
+			text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
+			opacity: 0.9;
+		}
+
+		@keyframes scrollBounce {
+
+			0%,
+			20%,
+			50%,
+			80%,
+			100% {
+				transform: translateY(0);
+			}
+
+			40% {
+				transform: translateY(-12px);
+			}
+
+			60% {
+				transform: translateY(-6px);
+			}
+		}
+
+		@keyframes scrollFadeInUp {
+			from {
+				opacity: 0;
+				transform: translate(-50%, 30px);
+			}
+
+			to {
+				opacity: 0.85;
+				transform: translate(-50%, 0);
+			}
+		}
+
 		/* Desktop Spacing Fix for Cover Modal */
 		@media (min-width: 922px) {
 			.wdp-mempelai {
@@ -5556,6 +5620,13 @@
 						<h2 class="elementor-heading-title elementor-size-default">Minggu, 31 Mei 2026</h2>
 					</div>
 				</div>
+				<!-- Scroll Indicator -->
+				<div class="scrolldown-wrapper">
+					<div class="scrolldown-text">Scroll</div>
+					<div class="scrolldown-icon">
+						<i class="fas fa-chevron-down"></i>
+					</div>
+				</div>
 			</div>
 			<div class="elementor-element elementor-element-5482976 e-con-full e-flex e-con e-child" data-id="5482976"
 				data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -5593,6 +5664,13 @@
 								<div class="elementor-spacer">
 									<div class="elementor-spacer-inner"></div>
 								</div>
+							</div>
+						</div>
+						<!-- Scroll Indicator -->
+						<div class="scrolldown-wrapper">
+							<div class="scrolldown-text">Scroll</div>
+							<div class="scrolldown-icon">
+								<i class="fas fa-chevron-down"></i>
 							</div>
 						</div>
 					</div>
@@ -6831,7 +6909,7 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			let guestName = urlParams.get('to');
 			let path = window.location.pathname.replace(/^\/|\/$/g, '').replace('.html', '');
-			
+
 			// Cek apakah ada slug di query string (contoh: /?berlian-kellin)
 			let querySlug = window.location.search.replace('?', '').split('&')[0];
 			// Jika querySlug mengandung '=', berarti itu parameter biasa (seperti ?to=), abaikan
@@ -6855,7 +6933,7 @@
 					console.log('Fetching guest list from Google Sheets...');
 					const response = await fetch(SPREADSHEET_CSV_URL);
 					const data = await response.text();
-					
+
 					const rows = data.split(/\r?\n/).filter(line => line.trim() !== '');
 					console.log('Searching for slug:', targetSlug);
 
