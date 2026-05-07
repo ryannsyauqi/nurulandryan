@@ -106,6 +106,220 @@
 		e-page-transition {
 			display: none !important;
 		}
+
+		/* Balanced Mixed-Size Gallery Styles */
+		.moments-container {
+			padding: 0 10px !important;
+			width: 100% !important;
+			max-width: 600px !important;
+			margin: 20px auto !important;
+			box-sizing: border-box !important;
+		}
+
+		#ryans-moments-grid {
+			display: grid !important;
+			grid-template-columns: repeat(6, 1fr) !important;
+			gap: 6px !important;
+			width: 100% !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			align-items: stretch !important;
+		}
+
+		.moments-grid-item {
+			position: relative !important;
+			overflow: hidden !important;
+			border-radius: 10px !important;
+			cursor: pointer !important;
+			width: 100% !important;
+			/* DO NOT put height: 100% here, it causes overlap */
+		}
+
+		.moments-grid-item img {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+			display: block !important;
+		}
+
+		/* Mapping aspect ratios to the actual image dimensions */
+		/* gallery-1 (Portrait), gallery-2 (Portrait) */
+		.moments-grid-item:nth-child(1),
+		.moments-grid-item:nth-child(2) { 
+			grid-column: span 3 !important; 
+			aspect-ratio: 2/3 !important;
+		}
+		
+		/* gallery-3 (Portrait), gallery-4 (Landscape) */
+		.moments-grid-item:nth-child(3) { 
+			grid-column: span 2 !important; 
+			aspect-ratio: 2/3 !important;
+		}
+		.moments-grid-item:nth-child(4) { 
+			grid-column: span 4 !important; 
+			aspect-ratio: 3/2 !important;
+		}
+		
+		/* gallery-5 (Landscape), gallery-6 (Portrait) */
+		.moments-grid-item:nth-child(5) { 
+			grid-column: span 4 !important; 
+			aspect-ratio: 3/2 !important;
+		}
+		.moments-grid-item:nth-child(6) { 
+			grid-column: span 2 !important; 
+			aspect-ratio: 2/3 !important;
+		}
+
+		@media (min-width: 1024px) {
+			.moments-container {
+				max-width: 1000px !important;
+			}
+		}
+
+		.moments-scroll-container {
+			margin-top: 6px !important; /* Consistent 6px gap */
+			margin-bottom: 100px !important; /* Requested margin */
+			padding-bottom: 20px !important;
+			width: 100% !important;
+			overflow: hidden !important;
+			position: relative !important;
+			z-index: 50 !important; /* Force to top */
+		}
+
+		.moments-scroll-track {
+			display: flex !important;
+			overflow-x: auto !important;
+			gap: 6px !important;
+			padding: 5px 0 !important;
+			scrollbar-width: none !important;
+			scroll-behavior: smooth !important;
+		}
+
+		.moments-scroll-track::-webkit-scrollbar {
+			display: none !important;
+		}
+
+		.moments-scroll-item {
+			flex: 0 0 70px !important;
+			width: 70px !important;
+			height: 70px !important;
+			border-radius: 4px !important;
+			overflow: hidden !important;
+			cursor: pointer !important;
+			opacity: 1 !important;
+			position: relative !important;
+			z-index: 51 !important; /* Guarantee clickable */
+			pointer-events: auto !important;
+			background-color: #333 !important; /* Fallback color to see if img fails */
+		}
+
+		.moments-scroll-item img {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+		}
+
+		/* Dots Pagination */
+		.moments-dots {
+			display: flex !important;
+			justify-content: center !important;
+			gap: 6px !important;
+			margin-top: 10px !important;
+		}
+
+		.moment-dot {
+			width: 6px !important;
+			height: 6px !important;
+			background: rgba(255, 255, 255, 0.3) !important;
+			border-radius: 50% !important;
+			cursor: pointer !important;
+			transition: all 0.3s ease !important;
+		}
+
+		.moment-dot.active {
+			background: #ffffff !important;
+			transform: scale(1.3) !important;
+		}
+
+		/* Lightbox Styles */
+		.moments-lightbox {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.95);
+			z-index: 10000;
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.moments-lightbox.active {
+			display: flex;
+		}
+
+		.moments-lightbox-content {
+			position: relative;
+			max-width: 90%;
+			max-height: 80%;
+		}
+
+		.moments-lightbox-content img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+			border-radius: 4px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.moments-lightbox-close {
+			position: fixed;
+			top: 20px;
+			right: 20px;
+			color: white;
+			font-size: 40px;
+			cursor: pointer;
+			z-index: 10001;
+			width: 44px;
+			height: 44px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(0, 0, 0, 0.5);
+			border-radius: 50%;
+		}
+
+		.moments-lightbox-nav {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			transform: translateY(-50%);
+			padding: 0 20px;
+			box-sizing: border-box;
+			pointer-events: none;
+		}
+
+		.moments-lightbox-btn {
+			width: 44px;
+			height: 44px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			cursor: pointer;
+			pointer-events: auto;
+			transition: background 0.3s;
+		}
+
+		.moments-lightbox-btn:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
 	</style>
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:label1" content="Estimasi waktu membaca">
@@ -6051,13 +6265,16 @@
 
 				<div class="elementor-element elementor-element-1aa29f0 e-flex e-con-full e-con e-child"
 					data-id="1aa29f0" data-element_type="container"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
+					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
+					style="background-image: url('./assets/images/gallery-15.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; position: relative;">
+					<!-- Add dark overlay so the white text is readable against the background -->
+					<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0;"></div>
+					<div class="e-con-inner" style="position: relative; z-index: 1;">
 						<div class="elementor-element elementor-element-title-moments animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
 							data-id="title-moments" data-element_type="widget"
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default"
-							style="text-align: center; width: 100%; padding-top: 60px;">
+							style="text-align: center; width: 100%; margin-top: 100px; padding-top: 30px;">
 							<div class="elementor-widget-container" style="text-align: center;">
 								<h2 class="elementor-heading-title elementor-size-default"
 									style="text-align: center; color: #ffffff; font-size: 2.5rem;">
@@ -6068,7 +6285,7 @@
 							data-id="quote-moments" data-element_type="widget"
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default"
-							style="text-align: center; width: 100%; padding-bottom: 40px; margin-top: -20px;">
+							style="text-align: center; width: 100%; padding-bottom: 20px; margin-top: -20px;">
 							<div class="elementor-widget-container" style="text-align: center;">
 								<h3 class="elementor-heading-title elementor-size-default"
 									style="text-align: center; color: #ffffff; font-family: 'Jost', Sans-serif; font-size: 0.95rem; font-weight: 300; font-style: italic; opacity: 0.8; max-width: 500px; margin: 0 auto; line-height: 1.6;">
@@ -6076,115 +6293,35 @@
 									reality, I’d find you and I’d choose you.”</h3>
 							</div>
 						</div>
-						<div class="elementor-element elementor-element-99024b5 elementor-widget elementor-widget-gallery"
-							data-id="99024b5" data-element_type="widget"
-							data-settings="{&quot;gallery_layout&quot;:&quot;justified&quot;,&quot;ideal_row_height_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:250,&quot;sizes&quot;:[]},&quot;lazyload&quot;:&quot;yes&quot;,&quot;ideal_row_height&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:200,&quot;sizes&quot;:[]},&quot;ideal_row_height_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:150,&quot;sizes&quot;:[]},&quot;gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;link_to&quot;:&quot;file&quot;,&quot;overlay_background&quot;:&quot;yes&quot;,&quot;content_hover_animation&quot;:&quot;fade-in&quot;}"
-							data-widget_type="gallery.default">
-							<div class="elementor-widget-container">
-								<div class="elementor-gallery__container e-gallery-container e-gallery-justified e-gallery--ltr e-gallery--lazyload"
-									style="--hgap: 10px; --vgap: 10px; --animation-duration: 350ms; --container-aspect-ratio: 1.86433106373956;">
+							<div id="ryans-moments-grid">
+								<div class="moments-grid-item" onclick="openLightbox(0)"><img src="./assets/images/gallery-1.jpg" alt="Gallery 1"></div>
+								<div class="moments-grid-item" onclick="openLightbox(1)"><img src="./assets/images/gallery-2.jpg" alt="Gallery 2"></div>
+								<div class="moments-grid-item" onclick="openLightbox(2)"><img src="./assets/images/gallery-3.jpg" alt="Gallery 3"></div>
+								<div class="moments-grid-item" onclick="openLightbox(3)"><img src="./assets/images/gallery-4.jpg" alt="Gallery 4"></div>
+								<div class="moments-grid-item" onclick="openLightbox(4)"><img src="./assets/images/gallery-5.jpg" alt="Gallery 5"></div>
+								<div class="moments-grid-item" onclick="openLightbox(5)"><img src="./assets/images/gallery-6.jpg" alt="Gallery 6"></div>
+							</div>
 
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content e-gallery-first-row-item"
-										href="./assets/images/gallery-outdoor-1.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NTksInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcL0M2QTU0NDFFLTgxNTItNDA2Ri04MTU3LTc1MkZERTY2QjdCRV8xNF8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.23498233215547704; --gap-count: 2; --item-height: 18.13563804776812%; --item-start: 0; --item-row-index: 0; --item-top: 36.861281653037985%; --row: 2;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-1.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-1.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content"
-										href="./assets/images/gallery-outdoor-2.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NTgsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcL0JBQjdGMTc3LTQwQzUtNEI5RC05MDlELUIzNTZEN0RDODI4Ql8xM18xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.23498233215547704; --gap-count: 2; --item-height: 18.13563804776812%; --item-start: 0.23498233215547704; --item-row-index: 1; --item-top: 36.861281653037985%; --row: 2;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-2.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-2.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content"
-										href="./assets/images/gallery-outdoor-3.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NTYsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcLzUyNjg3M0FELTRDMzctNDgwQy04OUIzLUY2OEZCRkU4RTM4OV8xMl8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.5300353356890459; --gap-count: 2; --item-height: 18.13563804776812%; --item-start: 0.46996466431095407; --item-row-index: 2; --item-top: 36.861281653037985%; --row: 2;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-3.jpg" data-width="2560"
-											data-height="1707" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-3.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content e-gallery-first-row-item"
-										href="./assets/images/gallery-outdoor-4.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NTUsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcLzU2MUZFNTNELUE1NDktNEQ3NC1CMjhGLUE5MDg3MDE5NEE4M18xMV8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.25; --gap-count: 3; --item-height: 18.886761176946134%; --item-start: 0; --item-row-index: 0; --item-top: 54.9969197008061%; --row: 3;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-4.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-4.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content"
-										href="./assets/images/gallery-outdoor-5.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NjIsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcL0ZGQTFFMjgxLTgyMUQtNDQ2Ri1CNDJBLUY1MTJDRDk5MzdCNV8xN18xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.25; --gap-count: 3; --item-height: 18.886761176946134%; --item-start: 0.25; --item-row-index: 1; --item-top: 54.9969197008061%; --row: 3;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-5.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-5.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content"
-										href="./assets/images/gallery-outdoor-6.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NjEsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcL0U1RDQ4MUE5LTlBRTctNDE4OC1BQzc2LUFCOTQ3NjJDMzhCRV8xNl8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.25; --gap-count: 3; --item-height: 18.886761176946134%; --item-start: 0.5; --item-row-index: 2; --item-top: 54.9969197008061%; --row: 3;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-6.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-6.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content"
-										href="./assets/images/gallery-outdoor-7.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NjAsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcL0QxQzI4NTdGLUZFRTMtNDk5Qy1BMDZBLUJBMDA2OTIzM0JDOV8xNV8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.25; --gap-count: 3; --item-height: 18.886761176946134%; --item-start: 0.75; --item-row-index: 3; --item-top: 54.9969197008061%; --row: 3;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-7.jpg" data-width="1707"
-											data-height="2560" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-7.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
-									<a class="e-gallery-item elementor-gallery-item elementor-animated-content e-gallery-first-row-item"
-										href="./assets/images/gallery-outdoor-8.jpg" data-elementor-open-lightbox="yes"
-										data-elementor-lightbox-slideshow="99024b5"
-										data-e-action-hash="#elementor-action%3Aaction%3Dlightbox%26settings%3DeyJpZCI6NjE5NTQsInVybCI6Imh0dHBzOlwvXC9rYWxpZWZpbnZpdGF0aW9uLmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNVwvMDNcLzg1QTQ2NjhGLUEyMTQtNEE0My04OEVBLTI2NjlGMjNDNEMyQV8xMF8xMXpvbi1zY2FsZWQud2VicCIsInNsaWRlc2hvdyI6Ijk5MDI0YjUifQ%3D%3D"
-										style="--item-width: 0.6085192697768763; --gap-count: 0; --item-height: 21.76430760374789%; --item-start: 0; --item-row-index: 0; --item-top: 73.88368087775224%; --row: 4;">
-										<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded"
-											data-thumbnail="./assets/images/gallery-outdoor-8.jpg" data-width="2560"
-											data-height="1707" aria-label="" role="img"
-											style="background-image: url(&quot;./assets/images/gallery-outdoor-8.jpg&quot;);">
-										</div>
-										<div class="elementor-gallery-item__overlay"></div>
-									</a>
+							<div class="moments-scroll-container">
+								<div class="moments-scroll-track">
+									<div class="moments-scroll-item" onclick="openLightbox(6)"><img src="./assets/images/gallery-8.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(7)"><img src="./assets/images/gallery-9.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(8)"><img src="./assets/images/gallery-10.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(9)"><img src="./assets/images/gallery-11.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(10)"><img src="./assets/images/gallery-12.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(11)"><img src="./assets/images/gallery-13.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(12)"><img src="./assets/images/gallery-14.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(13)"><img src="./assets/images/gallery-15.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(14)"><img src="./assets/images/gallery-16.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(15)"><img src="./assets/images/gallery-17.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(16)"><img src="./assets/images/gallery-18.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(17)"><img src="./assets/images/gallery-19.jpg"></div>
+									<div class="moments-scroll-item" onclick="openLightbox(18)"><img src="./assets/images/gallery-20.jpg"></div>
 								</div>
+								<div id="momentsDots" class="moments-dots"></div>
 							</div>
 						</div>
 					</div>
-				</div>
 				<div class="elementor-element elementor-element-7716e40 e-flex e-con-full e-con e-child"
 					data-id="7716e40" data-element_type="container"
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -6759,7 +6896,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 
@@ -6979,6 +7115,132 @@
 
 
 
+	</script>
+	<!-- Gallery Lightbox -->
+	<div id="momentsLightbox" class="moments-lightbox">
+		<div class="moments-lightbox-close" onclick="closeLightbox()">&times;</div>
+		<div class="moments-lightbox-content">
+			<img id="lightboxImg" src="" alt="Moment">
+			<div class="moments-lightbox-nav">
+				<div class="moments-lightbox-btn" onclick="prevImage()">&#10094;</div>
+				<div class="moments-lightbox-btn" onclick="nextImage()">&#10095;</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const galleryImages = [
+			"./assets/images/gallery-1.jpg",
+			"./assets/images/gallery-2.jpg",
+			"./assets/images/gallery-3.jpg",
+			"./assets/images/gallery-4.jpg",
+			"./assets/images/gallery-5.jpg",
+			"./assets/images/gallery-6.jpg",
+			"./assets/images/gallery-8.jpg",
+			"./assets/images/gallery-9.jpg",
+			"./assets/images/gallery-10.jpg",
+			"./assets/images/gallery-11.jpg",
+			"./assets/images/gallery-12.jpg",
+			"./assets/images/gallery-13.jpg",
+			"./assets/images/gallery-14.jpg",
+			"./assets/images/gallery-15.jpg",
+			"./assets/images/gallery-16.jpg",
+			"./assets/images/gallery-17.jpg",
+			"./assets/images/gallery-18.jpg",
+			"./assets/images/gallery-19.jpg",
+			"./assets/images/gallery-20.jpg"
+		];
+
+		let currentImgIdx = 0;
+
+		function openLightbox(idx) {
+			currentImgIdx = idx;
+			const lightbox = document.getElementById('momentsLightbox');
+			const lightboxImg = document.getElementById('lightboxImg');
+			lightboxImg.src = galleryImages[currentImgIdx];
+			lightbox.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeLightbox() {
+			document.getElementById('momentsLightbox').classList.remove('active');
+			document.body.style.overflow = 'auto';
+		}
+
+		function nextImage() {
+			currentImgIdx = (currentImgIdx + 1) % galleryImages.length;
+			document.getElementById('lightboxImg').src = galleryImages[currentImgIdx];
+		}
+
+		function prevImage() {
+			currentImgIdx = (currentImgIdx - 1 + galleryImages.length) % galleryImages.length;
+			document.getElementById('lightboxImg').src = galleryImages[currentImgIdx];
+		}
+
+		// Auto-slide and Dots functionality
+		const scrollTrack = document.querySelector('.moments-scroll-track');
+		const dotsContainer = document.getElementById('momentsDots');
+		const scrollItems = document.querySelectorAll('.moments-scroll-item');
+		let autoSlideInterval;
+
+		// Create dots
+		scrollItems.forEach((_, idx) => {
+			const dot = document.createElement('div');
+			dot.className = 'moment-dot' + (idx === 0 ? ' active' : '');
+			dot.onclick = () => {
+				const scrollAmount = idx * (70 + 6); // width + gap
+				scrollTrack.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+				updateActiveDot(idx);
+				resetAutoSlide();
+			};
+			dotsContainer.appendChild(dot);
+		});
+
+		function updateActiveDot(activeIndex) {
+			document.querySelectorAll('.moment-dot').forEach((dot, idx) => {
+				dot.classList.toggle('active', idx === activeIndex);
+			});
+			scrollItems.forEach((item, idx) => {
+				item.classList.toggle('active', idx === activeIndex);
+			});
+		}
+
+		function startAutoSlide() {
+			autoSlideInterval = setInterval(() => {
+				const maxScroll = scrollTrack.scrollWidth - scrollTrack.clientWidth;
+				let newScroll = scrollTrack.scrollLeft + (70 + 6);
+				if (newScroll > maxScroll) newScroll = 0;
+				scrollTrack.scrollTo({ left: newScroll, behavior: 'smooth' });
+				
+				const activeIdx = Math.round(newScroll / (70 + 6));
+				updateActiveDot(activeIdx);
+			}, 3000);
+		}
+
+		function resetAutoSlide() {
+			clearInterval(autoSlideInterval);
+			startAutoSlide();
+		}
+
+		scrollTrack.addEventListener('scroll', () => {
+			const activeIdx = Math.round(scrollTrack.scrollLeft / (70 + 6));
+			updateActiveDot(activeIdx);
+		});
+
+		startAutoSlide();
+
+		// Close on background click
+		document.getElementById('momentsLightbox').addEventListener('click', function (e) {
+			if (e.target === this) closeLightbox();
+		});
+
+		// Keyboard navigation
+		document.addEventListener('keydown', function (e) {
+			if (!document.getElementById('momentsLightbox').classList.contains('active')) return;
+			if (e.key === 'Escape') closeLightbox();
+			if (e.key === 'ArrowRight') nextImage();
+			if (e.key === 'ArrowLeft') prevImage();
+		});
 	</script>
 </body>
 
