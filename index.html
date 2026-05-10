@@ -74,7 +74,6 @@
 		.wdp-dear,
 		.elementor-element-799dafa .elementor-heading-title,
 		.elementor-element-684dde2 .elementor-heading-title,
-		.elementor-element-486c242 .elementor-heading-title,
 		.elementor-element-fe572e3 .elementor-heading-title,
 		.elementor-element-0c5d2d1 .elementor-heading-title,
 		.elementor-element-12346ee .elementor-heading-title,
@@ -135,10 +134,12 @@
 			/* DO NOT put height: 100% here, it causes overlap */
 		}
 
-		.moments-grid .moments-scroll-item img {
+		.moments-grid-item img,
+		.moments-scroll-item img {
 			width: 100% !important;
 			height: 100% !important;
 			object-fit: cover !important;
+			object-position: center !important;
 			display: block !important;
 		}
 
@@ -146,7 +147,8 @@
 		.moments-download-btn {
 			position: fixed;
 			top: 20px;
-			right: 75px; /* Positioned to the left of the close button */
+			right: 75px;
+			/* Positioned to the left of the close button */
 			width: 44px;
 			height: 44px;
 			background: rgba(0, 0, 0, 0.5);
@@ -170,31 +172,34 @@
 		}
 
 		@media (max-width: 767px) {
-			.moments-download-btn {
+
+			.moments-download-btn,
+			.moments-lightbox-close {
 				top: 15px;
-				right: 65px;
 				width: 38px;
 				height: 38px;
 			}
-		}
 
-		@media (max-width: 767px) {
 			.moments-download-btn {
-				bottom: -50px;
-				padding: 10px 20px;
-				font-size: 12px;
+				right: 65px;
+			}
+
+			.moments-lightbox-close {
+				right: 15px;
 			}
 		}
 
-		/* Mapping aspect ratios to the actual image dimensions */
-		/* gallery-1 (Portrait), gallery-2 (Portrait) */
+
+
+		/* Mapping aspect ratios to ensure balanced row heights */
+		/* Row 1: 3-span + 3-span = 6. Both 2/3 aspect -> Balanced */
 		.moments-grid-item:nth-child(1),
 		.moments-grid-item:nth-child(2) {
 			grid-column: span 3 !important;
 			aspect-ratio: 2/3 !important;
 		}
 
-		/* gallery-3 (Portrait), gallery-4 (Landscape) */
+		/* Row 2: 2-span (2/3 aspect) + 4-span (4/3 aspect) -> Balanced height */
 		.moments-grid-item:nth-child(3) {
 			grid-column: span 2 !important;
 			aspect-ratio: 2/3 !important;
@@ -202,13 +207,13 @@
 
 		.moments-grid-item:nth-child(4) {
 			grid-column: span 4 !important;
-			aspect-ratio: 3/2 !important;
+			aspect-ratio: 4/3 !important;
 		}
 
-		/* gallery-5 (Landscape), gallery-6 (Portrait) */
+		/* Row 3: 4-span (4/3 aspect) + 2-span (2/3 aspect) -> Balanced height */
 		.moments-grid-item:nth-child(5) {
 			grid-column: span 4 !important;
-			aspect-ratio: 3/2 !important;
+			aspect-ratio: 4/3 !important;
 		}
 
 		.moments-grid-item:nth-child(6) {
@@ -330,7 +335,6 @@
 			top: 20px;
 			right: 20px;
 			color: white;
-			font-size: 40px;
 			cursor: pointer;
 			z-index: 10001;
 			width: 44px;
@@ -340,6 +344,16 @@
 			justify-content: center;
 			background: rgba(0, 0, 0, 0.5);
 			border-radius: 50%;
+			transition: all 0.3s ease;
+		}
+
+		.moments-lightbox-close:hover {
+			background: rgba(0, 0, 0, 0.8);
+			transform: scale(1.1);
+		}
+
+		.moments-lightbox-close svg {
+			fill: white;
 		}
 
 		.moments-lightbox-nav {
@@ -3414,7 +3428,7 @@
 
 		/*# sourceURL=astra-theme-css-inline-css */
 	</style>
-	<link rel="stylesheet" id="astra-google-fonts-css" href="./assets/css" media="all">
+	<link rel="stylesheet" id="astra-google-fonts-css" href="./assets/google-fonts.css" media="all">
 	<link rel="stylesheet" id="bdt-uikit-css" href="./assets/bdt-uikit.css" media="all">
 	<link rel="stylesheet" id="ep-helper-css" href="./assets/ep-helper.css" media="all">
 	<style id="wp-emoji-styles-inline-css">
@@ -3859,7 +3873,7 @@
 		}
 
 		.rsvp-title {
-			font-family: 'Rosemary', Sans-serif !important;
+			font-family: 'Cormorant', serif !important;
 			font-size: 2.5rem !important;
 			margin-bottom: 15px;
 			color: #ffffff;
@@ -3867,10 +3881,10 @@
 		}
 
 		.rsvp-subtitle {
-			font-family: 'Jost', Sans-serif !important;
-			font-size: 0.95rem !important;
-			font-weight: 300 !important;
-			font-style: italic !important;
+			font-family: 'Cormorant', serif !important;
+			font-size: 1rem !important;
+			font-weight: 400 !important;
+			font-style: normal !important;
 			opacity: 0.8 !important;
 			max-width: 500px;
 			margin: 0 auto 40px !important;
@@ -4048,8 +4062,7 @@
 		fbq('init', '1271225644049858');
 		fbq('track', 'PageView');
 	</script>
-	<noscript><img height="1" width="1" style="display:none"
-			src="https://www.facebook.com/tr?id=1271225644049858&ev=PageView&noscript=1" /></noscript>
+
 	<!-- End Meta Pixel Code -->
 	<!-- Meta Pixel Code -->
 	<script>
@@ -4067,8 +4080,7 @@
 		fbq('init', '1271225644049858');
 		fbq('track', 'PageView');
 	</script>
-	<noscript><img height="1" width="1" style="display:none"
-			src="https://www.facebook.com/tr?id=1271225644049858&ev=PageView&noscript=1" /></noscript>
+
 	<!-- End Meta Pixel Code -->
 	<meta name="generator"
 		content="Elementor 3.33.1; features: additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
@@ -5622,6 +5634,18 @@
 <body
 	class="wp-singular page-template page-template-elementor_canvas page page-id-61941 wp-custom-logo wp-embed-responsive wp-theme-astra ast-page-builder-template ast-no-sidebar astra-4.11.15 group-blog ast-single-post ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-61941 e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit dialog-body dialog-lightbox-body dialog-container dialog-lightbox-container ast-desktop"
 	style="overflow: auto;" data-elementor-device-mode="desktop">
+	<style type="text/css">
+		#loading-screen,
+		.loading,
+		.preloader,
+		e-page-transition {
+			display: none !important;
+		}
+	</style>
+	<noscript><img height="1" width="1" style="display:none"
+			src="https://www.facebook.com/tr?id=1271225644049858&ev=PageView&noscript=1" /></noscript>
+	<noscript><img height="1" width="1" style="display:none"
+			src="https://www.facebook.com/tr?id=1271225644049858&ev=PageView&noscript=1" /></noscript>
 	<!-- Meta Pixel Code -->
 	<script>
 		!function (f, b, e, v, n, t, s) {
@@ -6144,7 +6168,8 @@
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">Q.S. Ar-Rum: 21</h2>
+								<h2 class="elementor-heading-title elementor-size-default"
+									style="font-size: 28px !important;">Q.S. Ar-Rum: 21</h2>
 							</div>
 						</div>
 					</div>
@@ -6419,12 +6444,12 @@
 						<div class="elementor-element elementor-element-bb1649e animated-slow elementor-widget elementor-widget-image animated fadeInUp"
 							data-id="bb1649e" data-element_type="widget"
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-							data-widget_type="image.default">
-							<div class="elementor-widget-container">
+							data-widget_type="image.default" style="margin-bottom: 0 !important; padding: 0 !important;">
+							<div class="elementor-widget-container" style="margin: 0 !important; padding: 0 !important; display: flex; justify-content: center;">
 								<img fetchpriority="high" decoding="async"
-									style="width: 120px; height: auto; object-fit: contain; margin-bottom: 15px;"
-									src="./assets/download-1.png" class="attachment-full size-full wp-image-61969"
-									alt="Cincin">
+									style="width: 120px; height: auto; object-fit: contain; margin: 0 !important; display: block;"
+									src="./assets/Logo%20NR%20Wedding.svg" class="attachment-full size-full wp-image-61969"
+									alt="Logo NR">
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-9da77da animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
@@ -6440,8 +6465,11 @@
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">
-									<strong style="font-size: 1.3em; display: block; margin-bottom: 10px;">Minggu, 31
+								<h2 class="elementor-heading-title elementor-size-default"
+									style="font-size: 1.15rem; line-height: 1.6;">
+									<strong
+										style="font-size: 1.5em; display: block; margin-bottom: 12px; color: #ffffff;">Minggu,
+										31
 										Mei 2026</strong>
 									Akad: 08.00 - 09.00 WIB <br>
 									Resepsi: 10.00 - 16.00 WIB
@@ -6465,7 +6493,8 @@
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">Yayasan SMK Tri Karya Utama
+								<h2 class="elementor-heading-title elementor-size-default"
+									style="font-style: normal !important;">Yayasan SMK Tri Karya Utama
 								</h2>
 							</div>
 						</div>
@@ -6474,7 +6503,8 @@
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default">
 							<div class="elementor-widget-container">
-								<h2 class="elementor-heading-title elementor-size-default">Jl. Banten No.29, Perwata,
+								<h2 class="elementor-heading-title elementor-size-default"
+									style="font-style: normal !important;">Jl. Banten No.29, Perwata,
 									Kec. Teluk Betung Barat, Kota Bandar Lampung, Lampung 35223</h2>
 							</div>
 						</div>
@@ -6559,17 +6589,9 @@
 								<div class="moments-scroll-item" onclick="openLightbox(11)"><img
 										src="./assets/images/gallery-14.jpg" loading="lazy"></div>
 								<div class="moments-scroll-item" onclick="openLightbox(12)"><img
-										src="./assets/images/gallery-15.jpg" loading="lazy"></div>
-								<div class="moments-scroll-item" onclick="openLightbox(13)"><img
 										src="./assets/images/gallery-16.jpg" loading="lazy"></div>
-								<div class="moments-scroll-item" onclick="openLightbox(14)"><img
+								<div class="moments-scroll-item" onclick="openLightbox(13)"><img
 										src="./assets/images/gallery-17.jpg" loading="lazy"></div>
-								<div class="moments-scroll-item" onclick="openLightbox(15)"><img
-										src="./assets/images/gallery-18.jpg" loading="lazy"></div>
-								<div class="moments-scroll-item" onclick="openLightbox(16)"><img
-										src="./assets/images/gallery-19.jpg" loading="lazy"></div>
-								<div class="moments-scroll-item" onclick="openLightbox(17)"><img
-										src="./assets/images/gallery-20.jpg" loading="lazy"></div>
 							</div>
 							<div id="momentsDots" class="moments-dots"></div>
 						</div>
@@ -6595,7 +6617,7 @@
 							data-widget_type="heading.default" style="margin-bottom: 20px;">
 							<div class="elementor-widget-container" style="text-align: center;">
 								<p
-									style="color: #fff; font-family: 'Jost', Sans-serif; font-size: 14px; line-height: 1.6; max-width: 600px; margin: 0 auto; opacity: 0.9;">
+									style="color: #fff; font-family: 'Cormorant', serif !important; font-size: 14px !important; line-height: 1.6; max-width: 600px; margin: 0 auto; opacity: 0.9;">
 									Doa restu dan kebahagiaan Bapak/Ibu di hari pernikahan kami adalah hadiah terindah.
 									Namun jika ingin memberikan hadiah, segala bentuk hadiah untuk kehidupan baru
 									kami akan sangat berarti.
@@ -7196,11 +7218,16 @@
 		</script>
 		<!-- Gallery Lightbox -->
 		<div id="momentsLightbox" class="moments-lightbox">
-			<div class="moments-lightbox-close" onclick="closeLightbox()">&times;</div>
+			<div class="moments-lightbox-close" onclick="closeLightbox()">
+				<svg viewBox="0 0 24 24" width="24" height="24">
+					<path
+						d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+				</svg>
+			</div>
 			<div class="moments-lightbox-content">
 				<img id="lightboxImg" src="" alt="Moment">
 				<a id="downloadBtn" class="moments-download-btn" href="" download>
-					<svg viewBox="0 0 24 24" width="22" height="22">
+					<svg viewBox="0 0 24 24" width="24" height="24">
 						<path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
 					</svg>
 				</a>
@@ -7225,12 +7252,8 @@
 				"./assets/images/gallery-12.jpg",
 				"./assets/images/gallery-13.jpg",
 				"./assets/images/gallery-14.jpg",
-				"./assets/images/gallery-15.jpg",
 				"./assets/images/gallery-16.jpg",
-				"./assets/images/gallery-17.jpg",
-				"./assets/images/gallery-18.jpg",
-				"./assets/images/gallery-19.jpg",
-				"./assets/images/gallery-20.jpg"
+				"./assets/images/gallery-17.jpg"
 			];
 
 			let currentImgIdx = 0;
@@ -7258,7 +7281,7 @@
 				updateLightboxContent();
 			}
 
-			function updateLightboxContent() {
+			async function updateLightboxContent() {
 				const lightboxImg = document.getElementById('lightboxImg');
 				const downloadBtn = document.getElementById('downloadBtn');
 				const imgSrc = galleryImages[currentImgIdx];
@@ -7266,6 +7289,26 @@
 				lightboxImg.src = imgSrc;
 				downloadBtn.href = imgSrc;
 				downloadBtn.download = `nurul-ryan-wedding-${currentImgIdx + 1}.jpg`;
+
+				// Ensure download works without leaving page
+				downloadBtn.onclick = async (e) => {
+					e.preventDefault();
+					try {
+						const response = await fetch(imgSrc);
+						const blob = await response.blob();
+						const url = window.URL.createObjectURL(blob);
+						const a = document.createElement('a');
+						a.href = url;
+						a.download = downloadBtn.download;
+						document.body.appendChild(a);
+						a.click();
+						window.URL.revokeObjectURL(url);
+						document.body.removeChild(a);
+					} catch (error) {
+						console.error('Download failed:', error);
+						window.open(imgSrc, '_blank');
+					}
+				};
 			}
 
 			// Auto-slide and Dots functionality
