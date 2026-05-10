@@ -3798,6 +3798,174 @@
 		.elementor-61941 .elementor-element.elementor-element-7716e40 {
 			min-height: 600px !important;
 		}
+
+		/* RSVP Section Styles */
+		.rsvp-section {
+			padding: 80px 20px;
+			background-color: #000;
+			color: #fff;
+			text-align: center;
+			position: relative;
+		}
+
+		.rsvp-title {
+			font-family: 'Rosemary', cursive !important;
+			font-size: 60px;
+			margin-bottom: 10px;
+			color: #fff;
+		}
+
+		.rsvp-subtitle {
+			font-family: 'Jost', sans-serif;
+			font-size: 16px;
+			margin-bottom: 40px;
+			opacity: 0.8;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+		}
+
+		.rsvp-form {
+			max-width: 500px;
+			margin: 0 auto 60px;
+			text-align: left;
+			background: rgba(255, 255, 255, 0.03);
+			padding: 40px;
+			border-radius: 20px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+		}
+
+		.rsvp-form-group {
+			margin-bottom: 25px;
+		}
+
+		.rsvp-form-group label {
+			display: block;
+			margin-bottom: 10px;
+			font-family: 'Jost', sans-serif;
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 1.5px;
+			opacity: 0.7;
+		}
+
+		.rsvp-input, .rsvp-select, .rsvp-textarea {
+			width: 100%;
+			padding: 14px;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			color: #fff;
+			font-family: 'Jost', sans-serif;
+			font-size: 15px;
+			outline: none;
+			transition: all 0.3s ease;
+		}
+
+		.rsvp-input:focus, .rsvp-select:focus, .rsvp-textarea:focus {
+			border-color: rgba(255, 255, 255, 0.3);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		.rsvp-select option {
+			background-color: #1a1a1a;
+			color: #fff;
+		}
+
+		.rsvp-submit {
+			width: 100%;
+			padding: 18px;
+			background-color: #fff;
+			color: #000;
+			border: none;
+			border-radius: 50px;
+			font-family: 'Jost', sans-serif;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			cursor: pointer;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			margin-top: 10px;
+		}
+
+		.rsvp-submit:hover {
+			background-color: #e6e6e6;
+			transform: translateY(-2px);
+			box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+		}
+
+		.rsvp-messages {
+			max-width: 600px;
+			margin: 0 auto;
+			text-align: left;
+			max-height: 500px;
+			overflow-y: auto;
+			padding-right: 15px;
+		}
+
+		.rsvp-messages::-webkit-scrollbar {
+			width: 4px;
+		}
+
+		.rsvp-messages::-webkit-scrollbar-track {
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		.rsvp-messages::-webkit-scrollbar-thumb {
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 10px;
+		}
+
+		.message-item {
+			background: rgba(255, 255, 255, 0.03);
+			padding: 25px;
+			border-radius: 15px;
+			margin-bottom: 20px;
+			border-left: 2px solid rgba(255, 255, 255, 0.3);
+			animation: fadeIn 0.5s ease-out;
+		}
+
+		@keyframes fadeIn {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		.message-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 12px;
+		}
+
+		.message-name {
+			font-weight: 600;
+			font-family: 'Jost', sans-serif;
+			font-size: 16px;
+			color: #fff;
+		}
+
+		.message-status {
+			font-size: 11px;
+			background: rgba(255, 255, 255, 0.08);
+			padding: 4px 10px;
+			border-radius: 6px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			opacity: 0.6;
+		}
+
+		.message-content {
+			font-family: 'Jost', sans-serif;
+			font-size: 14px;
+			line-height: 1.6;
+			opacity: 0.8;
+			font-style: italic;
+		}
+
+		@media (max-width: 767px) {
+			.rsvp-title { font-size: 45px; }
+			.rsvp-form { padding: 25px; }
+		}
 	</style>
 	<link rel="stylesheet" id="elementor-gf-local-roboto-css" href="./assets/roboto.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-robotoslab-css" href="./assets/robotoslab.css" media="all">
@@ -6283,7 +6451,7 @@
 				<div class="elementor-element elementor-element-1aa29f0 e-flex e-con-full e-con e-child"
 					data-id="1aa29f0" data-element_type="container"
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
-					style="background-image: url('./assets/images/gallery-15.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; position: relative;">
+					style="background-image: url('./assets/images/gallery-3.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; position: relative;">
 					<!-- Add dark overlay so the white text is readable against the background -->
 					<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0;"></div>
 					<div class="e-con-inner" style="position: relative; z-index: 1;">
@@ -6405,216 +6573,39 @@
 						</div>
 					</div>
 				</div>
-				<div class="elementor-element elementor-element-f1f5e96 e-flex e-con-full e-con e-child"
-					data-id="f1f5e96" data-element_type="container"
-					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="e-con-inner">
-						<div class="elementor-element elementor-element-5d4ca68 e-flex e-con-full e-con e-child"
-							data-id="5d4ca68" data-element_type="container"
-							data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-							<div class="e-con-inner">
-								<div class="elementor-element elementor-element-2234811 animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
-									data-id="2234811" data-element_type="widget"
-									data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-									data-widget_type="heading.default">
-									<div class="elementor-widget-container">
-										<h2 class="elementor-heading-title elementor-size-default">Wedding Wish
-										</h2>
-									</div>
-								</div>
-								<div class="elementor-element elementor-element-36d1bc9 animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
-									data-id="36d1bc9" data-element_type="widget"
-									data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-									data-widget_type="heading.default">
-									<div class="elementor-widget-container">
-										<h2 class="elementor-heading-title elementor-size-default">Tuliskan Do’a
-											dan
-											Ucapan terbaik untuk kami</h2>
-									</div>
-								</div>
-								<div class="elementor-element elementor-element-2962010 elementor-widget elementor-widget-weddingpress-kit2"
-									data-id="2962010" data-element_type="widget"
-									data-settings="{&quot;show_date&quot;:&quot;yes&quot;}"
-									data-widget_type="weddingpress-kit2.default">
-									<div class="elementor-widget-container">
-										<div class="cui-wrapper cui-custom cui-border cui-full"
-											style="overflow: hidden;">
-											<div class="cui-wrap-link">
-												<div class="header-cui"><a id="cui-link-61941"
-														class="cui-link cui-icon-link cui-icon-link-true auto-load-true"
-														href="https://kaliefinvitation.com/ki-24/?post_id=61941&amp;comments=0&amp;get=200&amp;order=DESC"
-														title="0 Comment"><span>0</span> Comments</a></div>
-											</div><!--.cui-wrap-link-->
-											<div id="cui-wrap-commnent-61941" class="cui-wrap-comments"
-												style="display: block;">
-												<div id="cui-wrap-form-61941" class="cui-clearfix">
-													<div class="cui-comment-attendence">
-														<div id="invitation-count-61941"
-															class="cui_comment_count_card_wrap">
-															<div class="cui_comment_count_card_row">
-																<div class="cui_comment_count_card cui_card-hadir">
-																	<span>0</span><span>Hadir</span>
-																</div>
-																<div
-																	class="cui_comment_count_card cui_card-tidak_hadir">
-																	<span>0</span><span>Tidak Hadir</span>
-																</div>
-																<div class="cui_comment_count_card cui_card-masih_ragu">
-																	<span>0</span><span>Masih Ragu</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="cui-clearfix cui-wrap-form ">
-														<div id="cui-container-form-61941"
-															class="cui-container-form cui-no-login">
-															<div id="respond-61941" class="respond cui-clearfix">
-																<form
-																	action="https://kaliefinvitation.com/wp-comments-post.php"
-																	method="post" id="commentform-61941">
-																	<p class="comment-form-author cui-field-1">
-																		<input id="author" name="author" type="text"
-																			aria-required="true" class="cui-input"
-																			placeholder="Nama"><span
-																			class="cui-required">*</span><span
-																			class="cui-error-info cui-error-info-name">Mohon
-																			maaf! Khusus untuk tamu
-																			undangan</span>
-																	</p>
-																	<div class="cui-wrap-textarea"><textarea
-																			id="cui-textarea-61941"
-																			class="waci_comment cui-textarea autosize-textarea"
-																			name="comment" aria-required="true"
-																			placeholder="Ucapan" rows="2"
-																			style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 70px;"></textarea><span
-																			class="cui-required">*</span><span
-																			class="cui-error-info cui-error-info-text">2
-																			characters minimum.</span></div>
-																	<div class="nm-wrap-comments">
-																		<div class="row">
-																		</div>
-																	</div>
-																	<div
-																		class="cui-clearfix cui-wrap-select cui-field-wrap cui-select-attending">
-
-																		<select class="waci_comment cui-select"
-																			name="konfirmasi" id="konfirmasi">
-																			<option value="" disabled="" selected="">
-																				Konfirmasi Kehadiran</option>
-																			<option value="Hadir">Hadir</option>
-																			<option value="Tidak hadir">Tidak
-																				Hadir
-																			</option>
-																			<option value="Masih Ragu">Masih
-																				Ragu
-																			</option>
-																		</select><span class="cui-required"></span><span
-																			class="cui-error-info cui-error-info-confirm"></span>
-																	</div>
-																	<div class="cui-wrap-submit cui-clearfix">
-																		<p class="form-submit"><span class="cui-hide">Do
-																				not change these fields
-																				following</span><input type="text"
-																				class="cui-hide" name="name"
-																				value="username"><input type="text"
-																				class="cui-hide" name="nombre"
-																				value=""><input type="text"
-																				class="cui-hide" name="form-cui"
-																				value=""><input type="button"
-																				class="cui-form-btn cui-cancel-btn"
-																				value="Cancel"><input name="submit"
-																				id="submit-61941" value="Kirim"
-																				type="submit"><input type="hidden"
-																				name="commentpress" value="true"><input
-																				type="hidden" name="comment_post_ID"
-																				value="61941">
-																			<input type="hidden" name="comment_parent"
-																				value="0">
-																		</p>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div id="cui-comment-status-61941" class="cui-comment-status"
-													style="display: none;"></div>
-												<div id="cui-box" class="cui-box">
-													<ul id="cui-container-comment-61941"
-														class="cui-container-comments cui-order-DESC cui-has-0-comments"
-														data-order="DESC" style="display: block;">
-													</ul>
-												</div>
-												<div id="cui-holder-id-61941" class="cui-holder-61941 cui-holder"
-													style="display: none;">
-												</div>
-											</div><!--.cui-wrap-comments-->
-										</div><!--.cui-wrapper-->
-										<style>
-											.cui-wrapper .cui-holder {
-												display: block !important;
-											}
-										</style>
-
-
-
-										<style>
-											.cui-comment-attendence {
-												display: none;
-											}
-
-											.cui-wrap-select {
-												display: none;
-											}
-
-											.cui-wrapper .cui-wrap-form .cui-container-form .cui-wrap-submit {
-												margin-bottom: 10px;
-												margin-top: 15px;
-											}
-										</style>
-
-										<style>
-											.cui-comment-content {
-												margin-left: 0 !important;
-											}
-
-											.cui-comment-avatar {
-												display: none !important;
-											}
-										</style>
-										<script>
-
-											var txt = document.getElementById('cui-link-61941').innerHTML;
-											var pos = txt
-												.replace(/Comments/g, "Comments")
-											document.getElementById('cui-link-61941').innerHTML = pos;
-
-											var txt1 = document.getElementById('invitation-count-61941').innerHTML;
-											var pos1 = txt1
-												.replace(/Hadir/g, "Hadir")
-												.replace(/Tidak hadir/g, "Tidak Hadir")
-												.replace(/Masih Ragu/g, "Masih Ragu");
-											document.getElementById('invitation-count-61941').innerHTML = pos1;
-
-											var txt2 = document.getElementById('commentform-61941').innerHTML;
-											var pos2 = txt2
-												.replace(/Nama/g, "Nama")
-												.replace(/Ucapan/g, "Ucapan")
-												.replace(/Konfirmasi Kehadiran/g, "Konfirmasi Kehadiran")
-												.replace(/Datang/g, "Hadir")
-												.replace(/Absen/g, "Tidak Hadir")
-												.replace(/Mungkin/g, "Masih Ragu")
-												.replace(/Kirim/g, "Kirim");
-											document.getElementById('commentform-61941').innerHTML = pos2;
-
-										</script>
-
-									</div>
-								</div>
+				<section id="rsvp" class="rsvp-section">
+					<div class="rsvp-container">
+						<h2 class="rsvp-title">RSVP</h2>
+						<p class="rsvp-subtitle">Konfirmasi Kehadiran & Ucapan Doa</p>
+						
+						<form id="rsvp-form" class="rsvp-form">
+							<div class="rsvp-form-group">
+								<label for="rsvp-name">Nama Lengkap</label>
+								<input type="text" id="rsvp-name" class="rsvp-input" placeholder="Masukkan nama Anda" required>
 							</div>
+							
+							<div class="rsvp-form-group">
+								<label for="rsvp-status">Konfirmasi Kehadiran</label>
+								<select id="rsvp-status" class="rsvp-select" required>
+									<option value="" disabled selected>Pilih kehadiran</option>
+									<option value="Hadir">Hadir</option>
+									<option value="Tidak Hadir">Tidak Hadir</option>
+								</select>
+							</div>
+							
+							<div class="rsvp-form-group">
+								<label for="rsvp-message">Ucapan & Doa</label>
+								<textarea id="rsvp-message" class="rsvp-textarea" rows="4" placeholder="Tuliskan ucapan dan doa terbaik untuk kami" required></textarea>
+							</div>
+							
+							<button type="submit" class="rsvp-submit">Kirim Konfirmasi</button>
+						</form>
+						
+						<div id="rsvp-messages-list" class="rsvp-messages">
+							<!-- Pesan akan muncul di sini secara otomatis -->
 						</div>
 					</div>
-				</div>
+				</section>
 				<div class="elementor-element elementor-element-7a721f8 e-flex e-con-full e-con e-child"
 					data-id="7a721f8" data-element_type="container"
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -6858,12 +6849,10 @@
 										playAudio();
 										if (document.body.contains(document.getElementById("song"))) {
 											document.getElementById("song").play();
-											document.documentElement.requestFullscreen();
 											isYT = false;
 										} else {
 											isYT = true;
 											player.playVideo();
-											document.documentElement.requestFullscreen();
 										}
 										function playAudio() {
 											var isYT = false;
@@ -7257,6 +7246,44 @@
 			if (e.key === 'ArrowRight') nextImage();
 			if (e.key === 'ArrowLeft') prevImage();
 		});
+		// RSVP Logic
+		const rsvpForm = document.getElementById('rsvp-form');
+		const messagesList = document.getElementById('rsvp-messages-list');
+
+		function loadMessages() {
+			const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+			messagesList.innerHTML = '';
+			messages.reverse().forEach(msg => {
+				const div = document.createElement('div');
+				div.className = 'message-item';
+				div.innerHTML = `
+					<div class="message-header">
+						<span class="message-name">${msg.name}</span>
+						<span class="message-status">${msg.status}</span>
+					</div>
+					<div class="message-content">${msg.message}</div>
+				`;
+				messagesList.appendChild(div);
+			});
+		}
+
+		rsvpForm.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const name = document.getElementById('rsvp-name').value;
+			const status = document.getElementById('rsvp-status').value;
+			const message = document.getElementById('rsvp-message').value;
+
+			const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+			messages.push({ name, status, message, date: new Date().toISOString() });
+			localStorage.setItem('wedding_messages', JSON.stringify(messages));
+
+			rsvpForm.reset();
+			loadMessages();
+			
+			alert('Terima kasih atas konfirmasi dan doa Anda!');
+		});
+
+		window.addEventListener('load', loadMessages);
 	</script>
 </body>
 
