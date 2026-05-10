@@ -135,38 +135,84 @@
 			/* DO NOT put height: 100% here, it causes overlap */
 		}
 
-		.moments-grid-item img {
+		.moments-grid .moments-scroll-item img {
 			width: 100% !important;
 			height: 100% !important;
 			object-fit: cover !important;
 			display: block !important;
 		}
 
+		/* Download Button Style */
+		.moments-download-btn {
+			position: fixed;
+			top: 20px;
+			right: 75px; /* Positioned to the left of the close button */
+			width: 44px;
+			height: 44px;
+			background: rgba(0, 0, 0, 0.5);
+			border-radius: 50%;
+			color: white !important;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+			z-index: 10001;
+			text-decoration: none !important;
+		}
+
+		.moments-download-btn:hover {
+			background: rgba(0, 0, 0, 0.8);
+			transform: scale(1.1);
+		}
+
+		.moments-download-btn svg {
+			fill: white;
+		}
+
+		@media (max-width: 767px) {
+			.moments-download-btn {
+				top: 15px;
+				right: 65px;
+				width: 38px;
+				height: 38px;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.moments-download-btn {
+				bottom: -50px;
+				padding: 10px 20px;
+				font-size: 12px;
+			}
+		}
+
 		/* Mapping aspect ratios to the actual image dimensions */
 		/* gallery-1 (Portrait), gallery-2 (Portrait) */
 		.moments-grid-item:nth-child(1),
-		.moments-grid-item:nth-child(2) { 
-			grid-column: span 3 !important; 
+		.moments-grid-item:nth-child(2) {
+			grid-column: span 3 !important;
 			aspect-ratio: 2/3 !important;
 		}
-		
+
 		/* gallery-3 (Portrait), gallery-4 (Landscape) */
-		.moments-grid-item:nth-child(3) { 
-			grid-column: span 2 !important; 
+		.moments-grid-item:nth-child(3) {
+			grid-column: span 2 !important;
 			aspect-ratio: 2/3 !important;
 		}
-		.moments-grid-item:nth-child(4) { 
-			grid-column: span 4 !important; 
+
+		.moments-grid-item:nth-child(4) {
+			grid-column: span 4 !important;
 			aspect-ratio: 3/2 !important;
 		}
-		
+
 		/* gallery-5 (Landscape), gallery-6 (Portrait) */
-		.moments-grid-item:nth-child(5) { 
-			grid-column: span 4 !important; 
+		.moments-grid-item:nth-child(5) {
+			grid-column: span 4 !important;
 			aspect-ratio: 3/2 !important;
 		}
-		.moments-grid-item:nth-child(6) { 
-			grid-column: span 2 !important; 
+
+		.moments-grid-item:nth-child(6) {
+			grid-column: span 2 !important;
 			aspect-ratio: 2/3 !important;
 		}
 
@@ -177,13 +223,16 @@
 		}
 
 		.moments-scroll-container {
-			margin-top: 6px !important; /* Consistent 6px gap */
-			margin-bottom: 100px !important; /* Requested margin */
+			margin-top: 6px !important;
+			/* Consistent 6px gap */
+			margin-bottom: 100px !important;
+			/* Requested margin */
 			padding-bottom: 20px !important;
 			width: 100% !important;
 			overflow: hidden !important;
 			position: relative !important;
-			z-index: 50 !important; /* Force to top */
+			z-index: 50 !important;
+			/* Force to top */
 		}
 
 		.moments-scroll-track {
@@ -208,9 +257,11 @@
 			cursor: pointer !important;
 			opacity: 1 !important;
 			position: relative !important;
-			z-index: 51 !important; /* Guarantee clickable */
+			z-index: 51 !important;
+			/* Guarantee clickable */
 			pointer-events: auto !important;
-			background-color: #333 !important; /* Fallback color to see if img fails */
+			background-color: #333 !important;
+			/* Fallback color to see if img fails */
 		}
 
 		.moments-scroll-item img {
@@ -3805,166 +3856,164 @@
 			background-color: #000;
 			color: #fff;
 			text-align: center;
-			position: relative;
 		}
 
 		.rsvp-title {
-			font-family: 'Rosemary', cursive !important;
-			font-size: 60px;
-			margin-bottom: 10px;
-			color: #fff;
+			font-family: 'Rosemary', Sans-serif !important;
+			font-size: 2.5rem !important;
+			margin-bottom: 15px;
+			color: #ffffff;
+			text-align: center;
 		}
 
 		.rsvp-subtitle {
-			font-family: 'Jost', sans-serif;
-			font-size: 16px;
-			margin-bottom: 40px;
-			opacity: 0.8;
-			letter-spacing: 2px;
-			text-transform: uppercase;
+			font-family: 'Jost', Sans-serif !important;
+			font-size: 0.95rem !important;
+			font-weight: 300 !important;
+			font-style: italic !important;
+			opacity: 0.8 !important;
+			max-width: 500px;
+			margin: 0 auto 40px !important;
+			line-height: 1.6 !important;
+			color: #ffffff;
 		}
 
 		.rsvp-form {
-			max-width: 500px;
+			max-width: 450px;
 			margin: 0 auto 60px;
 			text-align: left;
-			background: rgba(255, 255, 255, 0.03);
-			padding: 40px;
-			border-radius: 20px;
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(10px);
+			padding: 0;
+			background: transparent;
+			border: none;
 		}
 
 		.rsvp-form-group {
-			margin-bottom: 25px;
+			margin-bottom: 20px;
 		}
 
 		.rsvp-form-group label {
 			display: block;
-			margin-bottom: 10px;
+			margin-bottom: 8px;
 			font-family: 'Jost', sans-serif;
-			font-size: 12px;
+			font-size: 11px;
 			text-transform: uppercase;
-			letter-spacing: 1.5px;
-			opacity: 0.7;
+			letter-spacing: 2px;
+			opacity: 0.5;
 		}
 
-		.rsvp-input, .rsvp-select, .rsvp-textarea {
+		.rsvp-input,
+		.rsvp-select,
+		.rsvp-textarea {
 			width: 100%;
-			padding: 14px;
-			background: rgba(255, 255, 255, 0.05);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			border-radius: 12px;
-			color: #fff;
+			padding: 12px 0;
+			background: transparent !important;
+			border: none !important;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+			border-radius: 0 !important;
+			color: #fff !important;
 			font-family: 'Jost', sans-serif;
-			font-size: 15px;
+			font-size: 14px;
 			outline: none;
 			transition: all 0.3s ease;
 		}
 
-		.rsvp-input:focus, .rsvp-select:focus, .rsvp-textarea:focus {
-			border-color: rgba(255, 255, 255, 0.3);
-			background: rgba(255, 255, 255, 0.08);
+		.rsvp-input:focus,
+		.rsvp-select:focus,
+		.rsvp-textarea:focus {
+			border-bottom-color: rgba(255, 255, 255, 0.6) !important;
 		}
 
 		.rsvp-select option {
-			background-color: #1a1a1a;
+			background-color: #000;
 			color: #fff;
 		}
 
 		.rsvp-submit {
-			width: 100%;
-			padding: 18px;
-			background-color: #fff;
-			color: #000;
-			border: none;
-			border-radius: 50px;
+			width: auto;
+			padding: 10px 35px;
+			background-color: transparent !important;
+			border: 1px solid rgba(255, 255, 255, 0.7) !important;
+			border-radius: 50px !important;
+			color: #ffffff !important;
 			font-family: 'Jost', sans-serif;
-			font-weight: 600;
+			font-size: 13px;
+			font-weight: 500;
 			text-transform: uppercase;
 			letter-spacing: 2px;
 			cursor: pointer;
-			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			margin-top: 10px;
+			transition: all 0.3s ease;
+			margin: 30px auto 0;
+			display: block;
 		}
 
 		.rsvp-submit:hover {
-			background-color: #e6e6e6;
-			transform: translateY(-2px);
-			box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+			background-color: rgba(255, 255, 255, 0.1) !important;
+			border-color: #ffffff !important;
 		}
 
 		.rsvp-messages {
-			max-width: 600px;
+			max-width: 500px;
 			margin: 0 auto;
 			text-align: left;
-			max-height: 500px;
+			max-height: 400px;
 			overflow-y: auto;
-			padding-right: 15px;
 		}
 
 		.rsvp-messages::-webkit-scrollbar {
-			width: 4px;
-		}
-
-		.rsvp-messages::-webkit-scrollbar-track {
-			background: rgba(255, 255, 255, 0.05);
-		}
-
-		.rsvp-messages::-webkit-scrollbar-thumb {
-			background: rgba(255, 255, 255, 0.2);
-			border-radius: 10px;
+			width: 2px;
 		}
 
 		.message-item {
-			background: rgba(255, 255, 255, 0.03);
-			padding: 25px;
-			border-radius: 15px;
-			margin-bottom: 20px;
-			border-left: 2px solid rgba(255, 255, 255, 0.3);
+			padding: 20px 0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 			animation: fadeIn 0.5s ease-out;
 		}
 
 		@keyframes fadeIn {
-			from { opacity: 0; transform: translateY(10px); }
-			to { opacity: 1; transform: translateY(0); }
+			from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
 		}
 
 		.message-header {
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 12px;
+			align-items: baseline;
+			margin-bottom: 8px;
 		}
 
 		.message-name {
-			font-weight: 600;
-			font-family: 'Jost', sans-serif;
-			font-size: 16px;
+			font-family: 'Rosemary', Sans-serif !important;
+			font-size: 1.2rem;
 			color: #fff;
+			margin-bottom: 5px;
+			display: block;
 		}
 
 		.message-status {
-			font-size: 11px;
-			background: rgba(255, 255, 255, 0.08);
-			padding: 4px 10px;
-			border-radius: 6px;
+			font-size: 10px;
+			opacity: 0.5;
 			text-transform: uppercase;
 			letter-spacing: 1px;
-			opacity: 0.6;
 		}
 
 		.message-content {
-			font-family: 'Jost', sans-serif;
+			font-family: 'Jost', Sans-serif;
 			font-size: 14px;
 			line-height: 1.6;
-			opacity: 0.8;
-			font-style: italic;
+			opacity: 0.7;
 		}
 
 		@media (max-width: 767px) {
-			.rsvp-title { font-size: 45px; }
-			.rsvp-form { padding: 25px; }
+			.rsvp-title {
+				font-size: 2rem !important;
+			}
 		}
 	</style>
 	<link rel="stylesheet" id="elementor-gf-local-roboto-css" href="./assets/roboto.css" media="all">
@@ -6453,7 +6502,9 @@
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
 					style="background-image: url('./assets/images/gallery-3.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; position: relative;">
 					<!-- Add dark overlay so the white text is readable against the background -->
-					<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0;"></div>
+					<div
+						style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0;">
+					</div>
 					<div class="e-con-inner" style="position: relative; z-index: 1;">
 						<div class="elementor-element elementor-element-title-moments animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
 							data-id="title-moments" data-element_type="widget"
@@ -6478,34 +6529,52 @@
 									reality, I’d find you and I’d choose you.”</h3>
 							</div>
 						</div>
-							<div id="ryans-moments-grid">
-								<div class="moments-grid-item" onclick="openLightbox(0)"><img src="./assets/images/gallery-1.jpg" alt="Gallery 1"></div>
-								<div class="moments-grid-item" onclick="openLightbox(1)"><img src="./assets/images/gallery-2.jpg" alt="Gallery 2"></div>
-								<div class="moments-grid-item" onclick="openLightbox(2)"><img src="./assets/images/gallery-3.jpg" alt="Gallery 3"></div>
-								<div class="moments-grid-item" onclick="openLightbox(3)"><img src="./assets/images/gallery-4.jpg" alt="Gallery 4"></div>
-								<div class="moments-grid-item" onclick="openLightbox(4)"><img src="./assets/images/gallery-5.jpg" alt="Gallery 5"></div>
-								<div class="moments-grid-item" onclick="openLightbox(5)"><img src="./assets/images/gallery-6.jpg" alt="Gallery 6"></div>
-							</div>
+						<div id="ryans-moments-grid">
+							<div class="moments-grid-item" onclick="openLightbox(0)"><img
+									src="./assets/images/gallery-1.jpg" alt="Gallery 1" loading="lazy"></div>
+							<div class="moments-grid-item" onclick="openLightbox(1)"><img
+									src="./assets/images/gallery-2.jpg" alt="Gallery 2" loading="lazy"></div>
+							<div class="moments-grid-item" onclick="openLightbox(2)"><img
+									src="./assets/images/gallery-3.jpg" alt="Gallery 3" loading="lazy"></div>
+							<div class="moments-grid-item" onclick="openLightbox(3)"><img
+									src="./assets/images/gallery-4.jpg" alt="Gallery 4" loading="lazy"></div>
+							<div class="moments-grid-item" onclick="openLightbox(4)"><img
+									src="./assets/images/gallery-5.jpg" alt="Gallery 5" loading="lazy"></div>
+							<div class="moments-grid-item" onclick="openLightbox(5)"><img
+									src="./assets/images/gallery-6.jpg" alt="Gallery 6" loading="lazy"></div>
+						</div>
 
-							<div class="moments-scroll-container">
-								<div class="moments-scroll-track">
-									<div class="moments-scroll-item" onclick="openLightbox(6)"><img src="./assets/images/gallery-9.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(7)"><img src="./assets/images/gallery-10.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(8)"><img src="./assets/images/gallery-11.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(9)"><img src="./assets/images/gallery-12.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(10)"><img src="./assets/images/gallery-13.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(11)"><img src="./assets/images/gallery-14.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(12)"><img src="./assets/images/gallery-15.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(13)"><img src="./assets/images/gallery-16.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(14)"><img src="./assets/images/gallery-17.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(15)"><img src="./assets/images/gallery-18.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(16)"><img src="./assets/images/gallery-19.jpg"></div>
-									<div class="moments-scroll-item" onclick="openLightbox(17)"><img src="./assets/images/gallery-20.jpg"></div>
-								</div>
-								<div id="momentsDots" class="moments-dots"></div>
+						<div class="moments-scroll-container">
+							<div class="moments-scroll-track">
+								<div class="moments-scroll-item" onclick="openLightbox(6)"><img
+										src="./assets/images/gallery-9.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(7)"><img
+										src="./assets/images/gallery-10.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(8)"><img
+										src="./assets/images/gallery-11.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(9)"><img
+										src="./assets/images/gallery-12.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(10)"><img
+										src="./assets/images/gallery-13.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(11)"><img
+										src="./assets/images/gallery-14.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(12)"><img
+										src="./assets/images/gallery-15.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(13)"><img
+										src="./assets/images/gallery-16.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(14)"><img
+										src="./assets/images/gallery-17.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(15)"><img
+										src="./assets/images/gallery-18.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(16)"><img
+										src="./assets/images/gallery-19.jpg" loading="lazy"></div>
+								<div class="moments-scroll-item" onclick="openLightbox(17)"><img
+										src="./assets/images/gallery-20.jpg" loading="lazy"></div>
 							</div>
+							<div id="momentsDots" class="moments-dots"></div>
 						</div>
 					</div>
+				</div>
 				<div class="elementor-element elementor-element-7716e40 e-flex e-con-full e-con e-child"
 					data-id="7716e40" data-element_type="container"
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -6577,13 +6646,14 @@
 					<div class="rsvp-container">
 						<h2 class="rsvp-title">RSVP</h2>
 						<p class="rsvp-subtitle">Konfirmasi Kehadiran & Ucapan Doa</p>
-						
+
 						<form id="rsvp-form" class="rsvp-form">
 							<div class="rsvp-form-group">
 								<label for="rsvp-name">Nama Lengkap</label>
-								<input type="text" id="rsvp-name" class="rsvp-input" placeholder="Masukkan nama Anda" required>
+								<input type="text" id="rsvp-name" class="rsvp-input" placeholder="Masukkan nama Anda"
+									required>
 							</div>
-							
+
 							<div class="rsvp-form-group">
 								<label for="rsvp-status">Konfirmasi Kehadiran</label>
 								<select id="rsvp-status" class="rsvp-select" required>
@@ -6592,15 +6662,16 @@
 									<option value="Tidak Hadir">Tidak Hadir</option>
 								</select>
 							</div>
-							
+
 							<div class="rsvp-form-group">
 								<label for="rsvp-message">Ucapan & Doa</label>
-								<textarea id="rsvp-message" class="rsvp-textarea" rows="4" placeholder="Tuliskan ucapan dan doa terbaik untuk kami" required></textarea>
+								<textarea id="rsvp-message" class="rsvp-textarea" rows="4"
+									placeholder="Tuliskan ucapan dan doa terbaik untuk kami" required></textarea>
 							</div>
-							
-							<button type="submit" class="rsvp-submit">Kirim Konfirmasi</button>
+
+							<button type="submit" class="rsvp-submit">Submit</button>
 						</form>
-						
+
 						<div id="rsvp-messages-list" class="rsvp-messages">
 							<!-- Pesan akan muncul di sini secara otomatis -->
 						</div>
@@ -6795,7 +6866,8 @@
 
 
 											<div class="wdp-dear" style="width: auto !important;">Dear</div>
-											<div class="wdp-dear-sub" style="width: auto !important;">Bapak/Ibu/Saudara/i</div>
+											<div class="wdp-dear-sub" style="width: auto !important;">
+												Bapak/Ibu/Saudara/i</div>
 
 											<div class="wdp-name namatamu" style="width: auto !important;">Tamu
 												Undangan
@@ -6902,389 +6974,403 @@
 						</div>
 					</div>
 				</div>
+			</div>
 		</div>
-	</div>
 
-	<script type="speculationrules">
+		<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/astra/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
 
-	<script>
-		const lazyloadRunObserver = () => {
-			const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
-			const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						let lazyloadBackground = entry.target;
-						if (lazyloadBackground) {
-							lazyloadBackground.classList.add('e-lazyloaded');
+		<script>
+			const lazyloadRunObserver = () => {
+				const lazyloadBackgrounds = document.querySelectorAll(`.e-con.e-parent:not(.e-lazyloaded)`);
+				const lazyloadBackgroundObserver = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							let lazyloadBackground = entry.target;
+							if (lazyloadBackground) {
+								lazyloadBackground.classList.add('e-lazyloaded');
+							}
+							lazyloadBackgroundObserver.unobserve(entry.target);
 						}
-						lazyloadBackgroundObserver.unobserve(entry.target);
-					}
+					});
+				}, { rootMargin: '200px 0px 200px 0px' });
+				lazyloadBackgrounds.forEach((lazyloadBackground) => {
+					lazyloadBackgroundObserver.observe(lazyloadBackground);
 				});
-			}, { rootMargin: '200px 0px 200px 0px' });
-			lazyloadBackgrounds.forEach((lazyloadBackground) => {
-				lazyloadBackgroundObserver.observe(lazyloadBackground);
+			};
+			const events = [
+				'DOMContentLoaded',
+				'elementor/lazyload/observe',
+			];
+			events.forEach((event) => {
+				document.addEventListener(event, lazyloadRunObserver);
 			});
-		};
-		const events = [
-			'DOMContentLoaded',
-			'elementor/lazyload/observe',
-		];
-		events.forEach((event) => {
-			document.addEventListener(event, lazyloadRunObserver);
-		});
-	</script>
-	<script>
-		/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function () { var t, e = location.hash.substring(1); /^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus()) }, !1);
-	</script>
-	<script id="astra-theme-js-js-extra">
-		var astra = { "break_point": "921", "isRtl": "", "is_scroll_to_id": "1", "is_scroll_to_top": "", "is_header_footer_builder_active": "1", "responsive_cart_click": "flyout", "is_dark_palette": "" };
-		//# sourceURL=astra-theme-js-js-extra
-	</script>
-	<script src="./assets/frontend.min.js" id="astra-theme-js-js"></script>
-	<script src="./assets/wdp-swiper.min.js" id="wdp-swiper-js-js"></script>
-	<script src="./assets/qr-code.js" id="weddingpress-qr-js"></script>
-	<script src="./assets/exad-scripts.min.js" id="exad-main-script-js"></script>
-	<script src="./assets/qr-code-styling.js" id="qr-code-styling-js"></script>
-	<script src="./assets/xlsx.full.min.js" id="kirimkit-js"></script>
-	<script id="cui_js_script-js-extra">
-		var CUI_WP = { "ajaxurl": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "cuiNonce": "ccfd83b54f", "jpages": "true", "jPagesNum": "10", "textCounter": "false", "textCounterNum": "500", "widthWrap": "", "autoLoad": "true", "thanksComment": "Thanks for your comment!", "thanksReplyComment": "Thanks for answering the comment!", "duplicateComment": "You might have left one of the fields blank, or duplicate comments", "accept": "Accept", "cancel": "Cancel", "reply": "Reply", "textWriteComment": "Ucapan", "classPopularComment": "cui-popular-comment", "textToDisplay": "Text to display", "textCharacteresMin": "2 characters minimum", "textNavNext": "Next", "textNavPrev": "Previous", "textMsgDeleteComment": "Do you want delete this comment?", "textLoadMore": "Load more" };
-		//# sourceURL=cui_js_script-js-extra
-	</script>
-	<script src="./assets/cui_script.js" id="cui_js_script-js"></script>
-	<script src="./assets/jquery.jPages.min.js" id="cui_jPages-js"></script>
-	<script src="./assets/jquery.placeholder.min.js" id="cui_placeholder-js"></script>
-	<script src="./assets/autosize.min.js" id="cui_autosize-js"></script>
-	<script src="./assets/hooks.min.js" id="wp-hooks-js"></script>
-	<script src="./assets/i18n.min.js" id="wp-i18n-js"></script>
-	<script id="wp-i18n-js-after">
-		wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
-		//# sourceURL=wp-i18n-js-after
-	</script>
-	<script src="./assets/react.min.js" id="react-js"></script>
-	<script src="./assets/react-dom.min.js" id="react-dom-js"></script>
-	<script src="./assets/escape-html.min.js" id="wp-escape-html-js"></script>
-	<script src="./assets/element.min.js" id="wp-element-js"></script>
-	<script id="wdp-script-js-extra">
-		var _wdpobject = { "ajaxurl": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "home_url": "https://kaliefinvitation.com", "site_url": "https://kaliefinvitation.com", "site_title": "Kalief Invitation", "code_nonce": "f3d318adef", "member_area": "https://akses.weddingpress.net/", "nonce_key": "_wdp_nonce", "_wdp_nonce": "484bfc0ea6", "is_admin": "" };
-		//# sourceURL=wdp-script-js-extra
-	</script>
-	<script src="./assets/license.min.js" id="wdp-script-js"></script>
-	<script src="./assets/instant-page.min.js" id="instant-page-js"></script>
-	<script src="./assets/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
-	<script src="./assets/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
-	<script src="./assets/core.min.js" id="jquery-ui-core-js"></script>
-	<script id="elementor-frontend-js-before">
-		var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Bagikan di Facebook", "shareOnTwitter": "Bagikan di Twitter", "pinIt": "Buat Pin", "download": "Unduh", "downloadImage": "Unduh gambar", "fullscreen": "Layar Penuh", "zoom": "Perbesar", "share": "Bagikan", "playVideo": "Putar Video", "previous": "Sebelumnya", "next": "Selanjutnya", "close": "Tutup", "a11yCarouselPrevSlideMessage": "Slide sebelumnya", "a11yCarouselNextSlideMessage": "Slide selanjutnya", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 501, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 500, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Layar lebar", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } }, "hasCustomBreakpoints": true }, "version": "3.33.1", "is_static": false, "experimentalFeatures": { "additional_custom_breakpoints": true, "container": true, "theme_builder_v2": true, "nested-elements": true, "home_screen": true, "global_classes_should_enforce_capabilities": true, "e_variables": true, "cloud-library": true, "e_opt_in_v4_page": true, "import-export-customization": true, "e_pro_variables": true }, "urls": { "assets": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor\/assets\/", "ajaxurl": "https:\/\/kaliefinvitation.com\/wp-admin\/admin-ajax.php", "uploadUrl": "https:\/\/kaliefinvitation.com\/wp-content\/uploads" }, "nonces": { "floatingButtonsClickTracking": "6447a93336" }, "swiperClass": "swiper", "settings": { "page": [], "editorPreferences": [] }, "kit": { "viewport_mobile": 500, "body_background_background": "classic", "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 61941, "title": "KI%20-%2024%20-%20Kalief%20Invitation", "excerpt": "", "featuredImage": false } };
-		//# sourceURL=elementor-frontend-js-before
-	</script>
-	<script src="./assets/frontend(1).min.js" id="elementor-frontend-js"></script><span id="elementor-device-mode"
-		class="elementor-screen-only"></span>
-	<script src="./assets/jquery.sticky.min.js" id="e-sticky-js"></script>
-	<script src="./assets/swiper.min.js" id="swiper-js"></script>
-	<script src="./assets/e-gallery.min.js" id="elementor-gallery-js"></script>
-	<script src="./assets/frontend-scripts.min.js" id="eef-frontend-script-js"></script>
-	<script src="./assets/webpack-pro.runtime.min.js" id="elementor-pro-webpack-runtime-js"></script>
-	<script id="elementor-pro-frontend-js-before">
-		var ElementorProFrontendConfig = { "ajaxurl": "https:\/\/kaliefinvitation.com\/wp-admin\/admin-ajax.php", "nonce": "f63ad4b7a1", "urls": { "assets": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor-pro\/assets\/", "rest": "https:\/\/kaliefinvitation.com\/wp-json\/" }, "settings": { "lazy_load_background_images": true }, "popup": { "hasPopUps": true }, "shareButtonsNetworks": { "facebook": { "title": "Facebook", "has_counter": true }, "twitter": { "title": "Twitter" }, "linkedin": { "title": "LinkedIn", "has_counter": true }, "pinterest": { "title": "Pinterest", "has_counter": true }, "reddit": { "title": "Reddit", "has_counter": true }, "vk": { "title": "VK", "has_counter": true }, "odnoklassniki": { "title": "OK", "has_counter": true }, "tumblr": { "title": "Tumblr" }, "digg": { "title": "Digg" }, "skype": { "title": "Skype" }, "stumbleupon": { "title": "StumbleUpon", "has_counter": true }, "mix": { "title": "Mix" }, "telegram": { "title": "Telegram" }, "pocket": { "title": "Pocket", "has_counter": true }, "xing": { "title": "XING", "has_counter": true }, "whatsapp": { "title": "WhatsApp" }, "email": { "title": "Email" }, "print": { "title": "Print" }, "x-twitter": { "title": "X" }, "threads": { "title": "Threads" } }, "facebook_sdk": { "lang": "id_ID", "app_id": "" }, "lottie": { "defaultAnimationUrl": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json" } };
-		//# sourceURL=elementor-pro-frontend-js-before
-	</script>
-	<script src="./assets/frontend(2).min.js" id="elementor-pro-frontend-js"></script>
-	<script src="./assets/elements-handlers.min.js" id="pro-elements-handlers-js"></script><svg style="display: none;"
-		class="e-font-icon-svg-symbols"></svg>
-	<script src="./assets/bdt-uikit.js" id="bdt-uikit-js"></script>
-	<script id="weddingpress-wdp-js-extra">
-		var cevar = { "ajax_url": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "plugin_url": "https://kaliefinvitation.com/wp-content/plugins/weddingpress/" };
-		//# sourceURL=weddingpress-wdp-js-extra
-	</script>
-	<script src="./assets/wdp.min.js" id="weddingpress-wdp-js"></script>
-	<script id="kirim-kit-js-extra">
-		var sendkit_ajax = { "ajax_url": "https://kaliefinvitation.com/wp-admin/admin-ajax.php" };
-		//# sourceURL=kirim-kit-js-extra
-	</script>
-	<script src="./assets/guest-form.js" id="kirim-kit-js"></script>
-	<script id="wp-emoji-settings" type="application/json">
+		</script>
+		<script>
+			/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function () { var t, e = location.hash.substring(1); /^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus()) }, !1);
+		</script>
+		<script id="astra-theme-js-js-extra">
+			var astra = { "break_point": "921", "isRtl": "", "is_scroll_to_id": "1", "is_scroll_to_top": "", "is_header_footer_builder_active": "1", "responsive_cart_click": "flyout", "is_dark_palette": "" };
+			//# sourceURL=astra-theme-js-js-extra
+		</script>
+		<script src="./assets/frontend.min.js" id="astra-theme-js-js"></script>
+		<script src="./assets/wdp-swiper.min.js" id="wdp-swiper-js-js"></script>
+		<script src="./assets/qr-code.js" id="weddingpress-qr-js"></script>
+		<script src="./assets/exad-scripts.min.js" id="exad-main-script-js"></script>
+		<script src="./assets/qr-code-styling.js" id="qr-code-styling-js"></script>
+		<script src="./assets/xlsx.full.min.js" id="kirimkit-js"></script>
+		<script id="cui_js_script-js-extra">
+			var CUI_WP = { "ajaxurl": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "cuiNonce": "ccfd83b54f", "jpages": "true", "jPagesNum": "10", "textCounter": "false", "textCounterNum": "500", "widthWrap": "", "autoLoad": "true", "thanksComment": "Thanks for your comment!", "thanksReplyComment": "Thanks for answering the comment!", "duplicateComment": "You might have left one of the fields blank, or duplicate comments", "accept": "Accept", "cancel": "Cancel", "reply": "Reply", "textWriteComment": "Ucapan", "classPopularComment": "cui-popular-comment", "textToDisplay": "Text to display", "textCharacteresMin": "2 characters minimum", "textNavNext": "Next", "textNavPrev": "Previous", "textMsgDeleteComment": "Do you want delete this comment?", "textLoadMore": "Load more" };
+			//# sourceURL=cui_js_script-js-extra
+		</script>
+		<script src="./assets/cui_script.js" id="cui_js_script-js"></script>
+		<script src="./assets/jquery.jPages.min.js" id="cui_jPages-js"></script>
+		<script src="./assets/jquery.placeholder.min.js" id="cui_placeholder-js"></script>
+		<script src="./assets/autosize.min.js" id="cui_autosize-js"></script>
+		<script src="./assets/hooks.min.js" id="wp-hooks-js"></script>
+		<script src="./assets/i18n.min.js" id="wp-i18n-js"></script>
+		<script id="wp-i18n-js-after">
+			wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+			//# sourceURL=wp-i18n-js-after
+		</script>
+		<script src="./assets/react.min.js" id="react-js"></script>
+		<script src="./assets/react-dom.min.js" id="react-dom-js"></script>
+		<script src="./assets/escape-html.min.js" id="wp-escape-html-js"></script>
+		<script src="./assets/element.min.js" id="wp-element-js"></script>
+		<script id="wdp-script-js-extra">
+			var _wdpobject = { "ajaxurl": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "home_url": "https://kaliefinvitation.com", "site_url": "https://kaliefinvitation.com", "site_title": "Kalief Invitation", "code_nonce": "f3d318adef", "member_area": "https://akses.weddingpress.net/", "nonce_key": "_wdp_nonce", "_wdp_nonce": "484bfc0ea6", "is_admin": "" };
+			//# sourceURL=wdp-script-js-extra
+		</script>
+		<script src="./assets/license.min.js" id="wdp-script-js"></script>
+		<script src="./assets/instant-page.min.js" id="instant-page-js"></script>
+		<script src="./assets/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
+		<script src="./assets/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
+		<script src="./assets/core.min.js" id="jquery-ui-core-js"></script>
+		<script id="elementor-frontend-js-before">
+			var elementorFrontendConfig = { "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false }, "i18n": { "shareOnFacebook": "Bagikan di Facebook", "shareOnTwitter": "Bagikan di Twitter", "pinIt": "Buat Pin", "download": "Unduh", "downloadImage": "Unduh gambar", "fullscreen": "Layar Penuh", "zoom": "Perbesar", "share": "Bagikan", "playVideo": "Putar Video", "previous": "Sebelumnya", "next": "Selanjutnya", "close": "Tutup", "a11yCarouselPrevSlideMessage": "Slide sebelumnya", "a11yCarouselNextSlideMessage": "Slide selanjutnya", "a11yCarouselFirstSlideMessage": "This is the first slide", "a11yCarouselLastSlideMessage": "This is the last slide", "a11yCarouselPaginationBulletMessage": "Go to slide" }, "is_rtl": false, "breakpoints": { "xs": 0, "sm": 480, "md": 501, "lg": 1025, "xl": 1440, "xxl": 1600 }, "responsive": { "breakpoints": { "mobile": { "label": "Mobile Portrait", "value": 500, "default_value": 767, "direction": "max", "is_enabled": true }, "mobile_extra": { "label": "Mobile Landscape", "value": 880, "default_value": 880, "direction": "max", "is_enabled": false }, "tablet": { "label": "Tablet Portrait", "value": 1024, "default_value": 1024, "direction": "max", "is_enabled": true }, "tablet_extra": { "label": "Tablet Landscape", "value": 1200, "default_value": 1200, "direction": "max", "is_enabled": false }, "laptop": { "label": "Laptop", "value": 1366, "default_value": 1366, "direction": "max", "is_enabled": false }, "widescreen": { "label": "Layar lebar", "value": 2400, "default_value": 2400, "direction": "min", "is_enabled": false } }, "hasCustomBreakpoints": true }, "version": "3.33.1", "is_static": false, "experimentalFeatures": { "additional_custom_breakpoints": true, "container": true, "theme_builder_v2": true, "nested-elements": true, "home_screen": true, "global_classes_should_enforce_capabilities": true, "e_variables": true, "cloud-library": true, "e_opt_in_v4_page": true, "import-export-customization": true, "e_pro_variables": true }, "urls": { "assets": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor\/assets\/", "ajaxurl": "https:\/\/kaliefinvitation.com\/wp-admin\/admin-ajax.php", "uploadUrl": "https:\/\/kaliefinvitation.com\/wp-content\/uploads" }, "nonces": { "floatingButtonsClickTracking": "6447a93336" }, "swiperClass": "swiper", "settings": { "page": [], "editorPreferences": [] }, "kit": { "viewport_mobile": 500, "body_background_background": "classic", "active_breakpoints": ["viewport_mobile", "viewport_tablet"], "global_image_lightbox": "yes", "lightbox_enable_counter": "yes", "lightbox_enable_fullscreen": "yes", "lightbox_enable_zoom": "yes", "lightbox_enable_share": "yes", "lightbox_title_src": "title", "lightbox_description_src": "description" }, "post": { "id": 61941, "title": "KI%20-%2024%20-%20Kalief%20Invitation", "excerpt": "", "featuredImage": false } };
+			//# sourceURL=elementor-frontend-js-before
+		</script>
+		<script src="./assets/frontend(1).min.js" id="elementor-frontend-js"></script><span id="elementor-device-mode"
+			class="elementor-screen-only"></span>
+		<script src="./assets/jquery.sticky.min.js" id="e-sticky-js"></script>
+		<script src="./assets/swiper.min.js" id="swiper-js"></script>
+		<script src="./assets/e-gallery.min.js" id="elementor-gallery-js"></script>
+		<script src="./assets/frontend-scripts.min.js" id="eef-frontend-script-js"></script>
+		<script src="./assets/webpack-pro.runtime.min.js" id="elementor-pro-webpack-runtime-js"></script>
+		<script id="elementor-pro-frontend-js-before">
+			var ElementorProFrontendConfig = { "ajaxurl": "https:\/\/kaliefinvitation.com\/wp-admin\/admin-ajax.php", "nonce": "f63ad4b7a1", "urls": { "assets": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor-pro\/assets\/", "rest": "https:\/\/kaliefinvitation.com\/wp-json\/" }, "settings": { "lazy_load_background_images": true }, "popup": { "hasPopUps": true }, "shareButtonsNetworks": { "facebook": { "title": "Facebook", "has_counter": true }, "twitter": { "title": "Twitter" }, "linkedin": { "title": "LinkedIn", "has_counter": true }, "pinterest": { "title": "Pinterest", "has_counter": true }, "reddit": { "title": "Reddit", "has_counter": true }, "vk": { "title": "VK", "has_counter": true }, "odnoklassniki": { "title": "OK", "has_counter": true }, "tumblr": { "title": "Tumblr" }, "digg": { "title": "Digg" }, "skype": { "title": "Skype" }, "stumbleupon": { "title": "StumbleUpon", "has_counter": true }, "mix": { "title": "Mix" }, "telegram": { "title": "Telegram" }, "pocket": { "title": "Pocket", "has_counter": true }, "xing": { "title": "XING", "has_counter": true }, "whatsapp": { "title": "WhatsApp" }, "email": { "title": "Email" }, "print": { "title": "Print" }, "x-twitter": { "title": "X" }, "threads": { "title": "Threads" } }, "facebook_sdk": { "lang": "id_ID", "app_id": "" }, "lottie": { "defaultAnimationUrl": "https:\/\/kaliefinvitation.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json" } };
+			//# sourceURL=elementor-pro-frontend-js-before
+		</script>
+		<script src="./assets/frontend(2).min.js" id="elementor-pro-frontend-js"></script>
+		<script src="./assets/elements-handlers.min.js" id="pro-elements-handlers-js"></script><svg
+			style="display: none;" class="e-font-icon-svg-symbols"></svg>
+		<script src="./assets/bdt-uikit.js" id="bdt-uikit-js"></script>
+		<script id="weddingpress-wdp-js-extra">
+			var cevar = { "ajax_url": "https://kaliefinvitation.com/wp-admin/admin-ajax.php", "plugin_url": "https://kaliefinvitation.com/wp-content/plugins/weddingpress/" };
+			//# sourceURL=weddingpress-wdp-js-extra
+		</script>
+		<script src="./assets/wdp.min.js" id="weddingpress-wdp-js"></script>
+		<script id="kirim-kit-js-extra">
+			var sendkit_ajax = { "ajax_url": "https://kaliefinvitation.com/wp-admin/admin-ajax.php" };
+			//# sourceURL=kirim-kit-js-extra
+		</script>
+		<script src="./assets/guest-form.js" id="kirim-kit-js"></script>
+		<script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://kaliefinvitation.com/wp-includes/js/wp-emoji-release.min.js?ver=6.9.4"}}
 </script>
-	<script type="module">
-		/*! This file is auto-generated */
-		const a = JSON.parse(document.getElementById("wp-emoji-settings").textContent), o = (window._wpemojiSettings = a, "wpEmojiSettingsSupports"), s = ["flag", "emoji"]; function i(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function c(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data); e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0); const a = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data); return t.every((e, t) => e === a[t]) } function p(e, t) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var n = e.getImageData(16, 16, 1, 1); for (let e = 0; e < n.data.length; e++)if (0 !== n.data[e]) return !1; return !0 } function u(e, t, n, a) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\udde8\ud83c\uddf6", "\ud83c\udde8\u200b\ud83c\uddf6") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !a(e, "\ud83e\u1fac8") }return !1 } function f(e, t, n, a) { let r; const o = (r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : document.createElement("canvas")).getContext("2d", { willReadFrequently: !0 }), s = (o.textBaseline = "top", o.font = "600 32px Arial", {}); return e.forEach(e => { s[e] = t(o, e, n, a) }), s } function r(e) { var t = document.createElement("script"); t.src = e, t.defer = !0, document.head.appendChild(t) } a.supports = { everything: !0, everythingExceptFlag: !0 }, new Promise(t => { let n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), c.toString(), p.toString()].join(",") + "));", a = new Blob([e], { type: "text/javascript" }); const r = new Worker(URL.createObjectURL(a), { name: "wpTestEmojiSupports" }); return void (r.onmessage = e => { i(n = e.data), r.terminate(), t(n) }) } catch (e) { } i(n = f(s, u, c, p)) } t(n) }).then(e => { for (const n in e) a.supports[n] = e[n], a.supports.everything = a.supports.everything && a.supports[n], "flag" !== n && (a.supports.everythingExceptFlag = a.supports.everythingExceptFlag && a.supports[n]); var t; a.supports.everythingExceptFlag = a.supports.everythingExceptFlag && !a.supports.flag, a.supports.everything || ((t = a.source || {}).concatemoji ? r(t.concatemoji) : t.wpemoji && t.twemoji && (r(t.twemoji), r(t.wpemoji))) });
-		//# sourceURL=https://kaliefinvitation.com/wp-includes/js/wp-emoji-loader.min.js
-	</script>
-	<div class="pafe-break-point" data-pafe-break-point-md="767" data-pafe-break-point-lg="1024"
-		data-pafe-ajax-url="https://kaliefinvitation.com/wp-admin/admin-ajax.php"></div>
-	<div
-		data-pafe-form-builder-tinymce-upload="https://kaliefinvitation.com/wp-content/plugins/piotnet-addons-for-elementor-pro/inc/tinymce/tinymce-upload.php">
-	</div>
-	<div data-pafe-plugin-url="https://kaliefinvitation.com/wp-content/plugins"></div>
+		<script type="module">
+			/*! This file is auto-generated */
+			const a = JSON.parse(document.getElementById("wp-emoji-settings").textContent), o = (window._wpemojiSettings = a, "wpEmojiSettingsSupports"), s = ["flag", "emoji"]; function i(e) { try { var t = { supportTests: e, timestamp: (new Date).valueOf() }; sessionStorage.setItem(o, JSON.stringify(t)) } catch (e) { } } function c(e, t, n) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data); e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0); const a = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data); return t.every((e, t) => e === a[t]) } function p(e, t) { e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0); var n = e.getImageData(16, 16, 1, 1); for (let e = 0; e < n.data.length; e++)if (0 !== n.data[e]) return !1; return !0 } function u(e, t, n, a) { switch (t) { case "flag": return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\udde8\ud83c\uddf6", "\ud83c\udde8\u200b\ud83c\uddf6") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f"); case "emoji": return !a(e, "\ud83e\u1fac8") }return !1 } function f(e, t, n, a) { let r; const o = (r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : document.createElement("canvas")).getContext("2d", { willReadFrequently: !0 }), s = (o.textBaseline = "top", o.font = "600 32px Arial", {}); return e.forEach(e => { s[e] = t(o, e, n, a) }), s } function r(e) { var t = document.createElement("script"); t.src = e, t.defer = !0, document.head.appendChild(t) } a.supports = { everything: !0, everythingExceptFlag: !0 }, new Promise(t => { let n = function () { try { var e = JSON.parse(sessionStorage.getItem(o)); if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests } catch (e) { } return null }(); if (!n) { if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try { var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), c.toString(), p.toString()].join(",") + "));", a = new Blob([e], { type: "text/javascript" }); const r = new Worker(URL.createObjectURL(a), { name: "wpTestEmojiSupports" }); return void (r.onmessage = e => { i(n = e.data), r.terminate(), t(n) }) } catch (e) { } i(n = f(s, u, c, p)) } t(n) }).then(e => { for (const n in e) a.supports[n] = e[n], a.supports.everything = a.supports.everything && a.supports[n], "flag" !== n && (a.supports.everythingExceptFlag = a.supports.everythingExceptFlag && a.supports[n]); var t; a.supports.everythingExceptFlag = a.supports.everythingExceptFlag && !a.supports.flag, a.supports.everything || ((t = a.source || {}).concatemoji ? r(t.concatemoji) : t.wpemoji && t.twemoji && (r(t.twemoji), r(t.wpemoji))) });
+			//# sourceURL=https://kaliefinvitation.com/wp-includes/js/wp-emoji-loader.min.js
+		</script>
+		<div class="pafe-break-point" data-pafe-break-point-md="767" data-pafe-break-point-lg="1024"
+			data-pafe-ajax-url="https://kaliefinvitation.com/wp-admin/admin-ajax.php"></div>
+		<div
+			data-pafe-form-builder-tinymce-upload="https://kaliefinvitation.com/wp-content/plugins/piotnet-addons-for-elementor-pro/inc/tinymce/tinymce-upload.php">
+		</div>
+		<div data-pafe-plugin-url="https://kaliefinvitation.com/wp-content/plugins"></div>
 
-	<script src="./assets/dialog.min.js"></script>
-	<script src="./assets/share-link.min.js"></script>
-	<link rel="stylesheet" href="./assets/custom-lightbox.min.css"><svg style="display: none;"
-		class="e-font-icon-svg-symbols"></svg>
-	<script>
-		function copyToClipboard(text, btn) {
-			const el = document.createElement('textarea');
-			el.value = text;
-			document.body.appendChild(el);
-			el.select();
-			document.execCommand('copy');
-			document.body.removeChild(el);
+		<script src="./assets/dialog.min.js"></script>
+		<script src="./assets/share-link.min.js"></script>
+		<link rel="stylesheet" href="./assets/custom-lightbox.min.css"><svg style="display: none;"
+			class="e-font-icon-svg-symbols"></svg>
+		<script>
+			function copyToClipboard(text, btn) {
+				const el = document.createElement('textarea');
+				el.value = text;
+				document.body.appendChild(el);
+				el.select();
+				document.execCommand('copy');
+				document.body.removeChild(el);
 
-			// Button feedback
-			const originalHTML = btn.innerHTML;
-			btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
-			btn.classList.add('copied');
-			setTimeout(function () {
-				btn.innerHTML = originalHTML;
-				btn.classList.remove('copied');
-			}, 2000);
-		}
-
-		// ==========================================
-		// DYNAMIC GUEST LIST FROM GOOGLE SHEETS
-		// ==========================================
-		const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1yQqFz-G_DoHKf84MNAn5rb6jNMxvevW5Du5XlfAZd6s/export?format=csv&sheet=Undangan+Wedding';
-
-		async function handleGuestName() {
-			const urlParams = new URLSearchParams(window.location.search);
-			let guestName = urlParams.get('to');
-			let path = window.location.pathname.replace(/^\/|\/$/g, '').replace('.html', '');
-
-			// Cek apakah ada slug di query string (contoh: /?berlian-kellin)
-			let querySlug = window.location.search.replace('?', '').split('&')[0];
-			// Jika querySlug mengandung '=', berarti itu parameter biasa (seperti ?to=), abaikan
-			if (querySlug.includes('=')) querySlug = null;
-
-			console.log('Path detected:', path);
-			console.log('Query slug detected:', querySlug);
-
-			// 1. Prioritas Utama: Parameter ?to=
-			if (guestName) {
-				console.log('Using guest name from URL parameter:', guestName);
-				updateGuestUI(guestName);
-				return;
+				// Button feedback
+				const originalHTML = btn.innerHTML;
+				btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+				btn.classList.add('copied');
+				setTimeout(function () {
+					btn.innerHTML = originalHTML;
+					btn.classList.remove('copied');
+				}, 2000);
 			}
 
-			// 2. Prioritas Kedua: Path (/slug) atau Query Slug (/?slug)
-			const targetSlug = decodeURIComponent(querySlug || path).toLowerCase().trim();
+			// ==========================================
+			// DYNAMIC GUEST LIST FROM GOOGLE SHEETS
+			// ==========================================
+			const SPREADSHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1yQqFz-G_DoHKf84MNAn5rb6jNMxvevW5Du5XlfAZd6s/export?format=csv&sheet=Undangan+Wedding';
 
-			if (targetSlug && targetSlug !== 'index.html' && targetSlug !== '') {
-				try {
-					console.log('Fetching guest list from Google Sheets...');
-					const response = await fetch(SPREADSHEET_CSV_URL);
-					const data = await response.text();
+			async function handleGuestName() {
+				const urlParams = new URLSearchParams(window.location.search);
+				let guestName = urlParams.get('to');
+				let path = window.location.pathname.replace(/^\/|\/$/g, '').replace('.html', '');
 
-					const rows = data.split(/\r?\n/).filter(line => line.trim() !== '');
-					console.log('Searching for slug:', targetSlug);
+				// Cek apakah ada slug di query string (contoh: /?berlian-kellin)
+				let querySlug = window.location.search.replace('?', '').split('&')[0];
+				// Jika querySlug mengandung '=', berarti itu parameter biasa (seperti ?to=), abaikan
+				if (querySlug.includes('=')) querySlug = null;
 
-					let foundName = null;
-					for (let row of rows) {
-						const cols = row.split(',').map(c => c.replace(/^"|"$/g, '').trim());
-						if (cols.length >= 2 && cols[1].toLowerCase() === targetSlug) {
-							foundName = cols[0];
-							break;
+				console.log('Path detected:', path);
+				console.log('Query slug detected:', querySlug);
+
+				// 1. Prioritas Utama: Parameter ?to=
+				if (guestName) {
+					console.log('Using guest name from URL parameter:', guestName);
+					updateGuestUI(guestName);
+					return;
+				}
+
+				// 2. Prioritas Kedua: Path (/slug) atau Query Slug (/?slug)
+				const targetSlug = decodeURIComponent(querySlug || path).toLowerCase().trim();
+
+				if (targetSlug && targetSlug !== 'index.html' && targetSlug !== '') {
+					try {
+						console.log('Fetching guest list from Google Sheets...');
+						const response = await fetch(SPREADSHEET_CSV_URL);
+						const data = await response.text();
+
+						const rows = data.split(/\r?\n/).filter(line => line.trim() !== '');
+						console.log('Searching for slug:', targetSlug);
+
+						let foundName = null;
+						for (let row of rows) {
+							const cols = row.split(',').map(c => c.replace(/^"|"$/g, '').trim());
+							if (cols.length >= 2 && cols[1].toLowerCase() === targetSlug) {
+								foundName = cols[0];
+								break;
+							}
 						}
-					}
 
-					if (foundName) {
-						guestName = foundName;
-						console.log('Match found in spreadsheet:', guestName);
-					} else {
-						console.log('No match in spreadsheet for slug:', targetSlug);
+						if (foundName) {
+							guestName = foundName;
+							console.log('Match found in spreadsheet:', guestName);
+						} else {
+							console.log('No match in spreadsheet for slug:', targetSlug);
+							guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+						}
+					} catch (error) {
+						console.error('Error fetching guest list:', error);
 						guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 					}
-				} catch (error) {
-					console.error('Error fetching guest list:', error);
-					guestName = targetSlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+				}
+
+				if (guestName) {
+					updateGuestUI(guestName);
 				}
 			}
 
-			if (guestName) {
-				updateGuestUI(guestName);
+
+			function updateGuestUI(name) {
+				const guestElements = document.querySelectorAll('.namatamu');
+				guestElements.forEach(el => {
+					el.innerText = name;
+				});
+				document.title = "Undangan Pernikahan Nurul & Ryan - " + name;
 			}
-		}
 
-
-		function updateGuestUI(name) {
-			const guestElements = document.querySelectorAll('.namatamu');
-			guestElements.forEach(el => {
-				el.innerText = name;
-			});
-			document.title = "Undangan Pernikahan Nurul & Ryan - " + name;
-		}
-
-		// Jalankan
-		handleGuestName();
+			// Jalankan
+			handleGuestName();
 
 
 
 
-	</script>
-	<!-- Gallery Lightbox -->
-	<div id="momentsLightbox" class="moments-lightbox">
-		<div class="moments-lightbox-close" onclick="closeLightbox()">&times;</div>
-		<div class="moments-lightbox-content">
-			<img id="lightboxImg" src="" alt="Moment">
-			<div class="moments-lightbox-nav">
-				<div class="moments-lightbox-btn" onclick="prevImage()">&#10094;</div>
-				<div class="moments-lightbox-btn" onclick="nextImage()">&#10095;</div>
+		</script>
+		<!-- Gallery Lightbox -->
+		<div id="momentsLightbox" class="moments-lightbox">
+			<div class="moments-lightbox-close" onclick="closeLightbox()">&times;</div>
+			<div class="moments-lightbox-content">
+				<img id="lightboxImg" src="" alt="Moment">
+				<a id="downloadBtn" class="moments-download-btn" href="" download>
+					<svg viewBox="0 0 24 24" width="22" height="22">
+						<path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+					</svg>
+				</a>
+				<div class="moments-lightbox-nav">
+					<div class="moments-lightbox-btn" onclick="prevImage()">&#10094;</div>
+					<div class="moments-lightbox-btn" onclick="nextImage()">&#10095;</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<script>
-		const galleryImages = [
-			"./assets/images/gallery-1.jpg",
-			"./assets/images/gallery-2.jpg",
-			"./assets/images/gallery-3.jpg",
-			"./assets/images/gallery-4.jpg",
-			"./assets/images/gallery-5.jpg",
-			"./assets/images/gallery-6.jpg",
-			"./assets/images/gallery-9.jpg",
-			"./assets/images/gallery-10.jpg",
-			"./assets/images/gallery-11.jpg",
-			"./assets/images/gallery-12.jpg",
-			"./assets/images/gallery-13.jpg",
-			"./assets/images/gallery-14.jpg",
-			"./assets/images/gallery-15.jpg",
-			"./assets/images/gallery-16.jpg",
-			"./assets/images/gallery-17.jpg",
-			"./assets/images/gallery-18.jpg",
-			"./assets/images/gallery-19.jpg",
-			"./assets/images/gallery-20.jpg"
-		];
+		<script>
+			const galleryImages = [
+				"./assets/images/gallery-1.jpg",
+				"./assets/images/gallery-2.jpg",
+				"./assets/images/gallery-3.jpg",
+				"./assets/images/gallery-4.jpg",
+				"./assets/images/gallery-5.jpg",
+				"./assets/images/gallery-6.jpg",
+				"./assets/images/gallery-9.jpg",
+				"./assets/images/gallery-10.jpg",
+				"./assets/images/gallery-11.jpg",
+				"./assets/images/gallery-12.jpg",
+				"./assets/images/gallery-13.jpg",
+				"./assets/images/gallery-14.jpg",
+				"./assets/images/gallery-15.jpg",
+				"./assets/images/gallery-16.jpg",
+				"./assets/images/gallery-17.jpg",
+				"./assets/images/gallery-18.jpg",
+				"./assets/images/gallery-19.jpg",
+				"./assets/images/gallery-20.jpg"
+			];
 
-		let currentImgIdx = 0;
+			let currentImgIdx = 0;
 
-		function openLightbox(idx) {
-			currentImgIdx = idx;
-			const lightbox = document.getElementById('momentsLightbox');
-			const lightboxImg = document.getElementById('lightboxImg');
-			lightboxImg.src = galleryImages[currentImgIdx];
-			lightbox.classList.add('active');
-			document.body.style.overflow = 'hidden';
-		}
+			function openLightbox(idx) {
+				currentImgIdx = idx;
+				const lightbox = document.getElementById('momentsLightbox');
+				updateLightboxContent();
+				lightbox.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
 
-		function closeLightbox() {
-			document.getElementById('momentsLightbox').classList.remove('active');
-			document.body.style.overflow = 'auto';
-		}
+			function closeLightbox() {
+				document.getElementById('momentsLightbox').classList.remove('active');
+				document.body.style.overflow = 'auto';
+			}
 
-		function nextImage() {
-			currentImgIdx = (currentImgIdx + 1) % galleryImages.length;
-			document.getElementById('lightboxImg').src = galleryImages[currentImgIdx];
-		}
+			function nextImage() {
+				currentImgIdx = (currentImgIdx + 1) % galleryImages.length;
+				updateLightboxContent();
+			}
 
-		function prevImage() {
-			currentImgIdx = (currentImgIdx - 1 + galleryImages.length) % galleryImages.length;
-			document.getElementById('lightboxImg').src = galleryImages[currentImgIdx];
-		}
+			function prevImage() {
+				currentImgIdx = (currentImgIdx - 1 + galleryImages.length) % galleryImages.length;
+				updateLightboxContent();
+			}
 
-		// Auto-slide and Dots functionality
-		const scrollTrack = document.querySelector('.moments-scroll-track');
-		const dotsContainer = document.getElementById('momentsDots');
-		const scrollItems = document.querySelectorAll('.moments-scroll-item');
-		let autoSlideInterval;
+			function updateLightboxContent() {
+				const lightboxImg = document.getElementById('lightboxImg');
+				const downloadBtn = document.getElementById('downloadBtn');
+				const imgSrc = galleryImages[currentImgIdx];
 
-		// Create dots
-		scrollItems.forEach((_, idx) => {
-			const dot = document.createElement('div');
-			dot.className = 'moment-dot' + (idx === 0 ? ' active' : '');
-			dot.onclick = () => {
-				const scrollAmount = idx * (70 + 6); // width + gap
-				scrollTrack.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-				updateActiveDot(idx);
-				resetAutoSlide();
-			};
-			dotsContainer.appendChild(dot);
-		});
+				lightboxImg.src = imgSrc;
+				downloadBtn.href = imgSrc;
+				downloadBtn.download = `nurul-ryan-wedding-${currentImgIdx + 1}.jpg`;
+			}
 
-		function updateActiveDot(activeIndex) {
-			document.querySelectorAll('.moment-dot').forEach((dot, idx) => {
-				dot.classList.toggle('active', idx === activeIndex);
+			// Auto-slide and Dots functionality
+			const scrollTrack = document.querySelector('.moments-scroll-track');
+			const dotsContainer = document.getElementById('momentsDots');
+			const scrollItems = document.querySelectorAll('.moments-scroll-item');
+			let autoSlideInterval;
+
+			// Create dots
+			scrollItems.forEach((_, idx) => {
+				const dot = document.createElement('div');
+				dot.className = 'moment-dot' + (idx === 0 ? ' active' : '');
+				dot.onclick = () => {
+					const scrollAmount = idx * (70 + 6); // width + gap
+					scrollTrack.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+					updateActiveDot(idx);
+					resetAutoSlide();
+				};
+				dotsContainer.appendChild(dot);
 			});
-			scrollItems.forEach((item, idx) => {
-				item.classList.toggle('active', idx === activeIndex);
-			});
-		}
 
-		function startAutoSlide() {
-			autoSlideInterval = setInterval(() => {
-				const maxScroll = scrollTrack.scrollWidth - scrollTrack.clientWidth;
-				let newScroll = scrollTrack.scrollLeft + (70 + 6);
-				if (newScroll > maxScroll) newScroll = 0;
-				scrollTrack.scrollTo({ left: newScroll, behavior: 'smooth' });
-				
-				const activeIdx = Math.round(newScroll / (70 + 6));
+			function updateActiveDot(activeIndex) {
+				document.querySelectorAll('.moment-dot').forEach((dot, idx) => {
+					dot.classList.toggle('active', idx === activeIndex);
+				});
+				scrollItems.forEach((item, idx) => {
+					item.classList.toggle('active', idx === activeIndex);
+				});
+			}
+
+			function startAutoSlide() {
+				autoSlideInterval = setInterval(() => {
+					const maxScroll = scrollTrack.scrollWidth - scrollTrack.clientWidth;
+					let newScroll = scrollTrack.scrollLeft + (70 + 6);
+					if (newScroll > maxScroll) newScroll = 0;
+					scrollTrack.scrollTo({ left: newScroll, behavior: 'smooth' });
+
+					const activeIdx = Math.round(newScroll / (70 + 6));
+					updateActiveDot(activeIdx);
+				}, 3000);
+			}
+
+			function resetAutoSlide() {
+				clearInterval(autoSlideInterval);
+				startAutoSlide();
+			}
+
+			scrollTrack.addEventListener('scroll', () => {
+				const activeIdx = Math.round(scrollTrack.scrollLeft / (70 + 6));
 				updateActiveDot(activeIdx);
-			}, 3000);
-		}
+			});
 
-		function resetAutoSlide() {
-			clearInterval(autoSlideInterval);
 			startAutoSlide();
-		}
 
-		scrollTrack.addEventListener('scroll', () => {
-			const activeIdx = Math.round(scrollTrack.scrollLeft / (70 + 6));
-			updateActiveDot(activeIdx);
-		});
+			// Close on background click
+			document.getElementById('momentsLightbox').addEventListener('click', function (e) {
+				if (e.target === this) closeLightbox();
+			});
 
-		startAutoSlide();
+			// Keyboard navigation
+			document.addEventListener('keydown', function (e) {
+				if (!document.getElementById('momentsLightbox').classList.contains('active')) return;
+				if (e.key === 'Escape') closeLightbox();
+				if (e.key === 'ArrowRight') nextImage();
+				if (e.key === 'ArrowLeft') prevImage();
+			});
+			// RSVP Logic
+			const rsvpForm = document.getElementById('rsvp-form');
+			const messagesList = document.getElementById('rsvp-messages-list');
 
-		// Close on background click
-		document.getElementById('momentsLightbox').addEventListener('click', function (e) {
-			if (e.target === this) closeLightbox();
-		});
-
-		// Keyboard navigation
-		document.addEventListener('keydown', function (e) {
-			if (!document.getElementById('momentsLightbox').classList.contains('active')) return;
-			if (e.key === 'Escape') closeLightbox();
-			if (e.key === 'ArrowRight') nextImage();
-			if (e.key === 'ArrowLeft') prevImage();
-		});
-		// RSVP Logic
-		const rsvpForm = document.getElementById('rsvp-form');
-		const messagesList = document.getElementById('rsvp-messages-list');
-
-		function loadMessages() {
-			const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
-			messagesList.innerHTML = '';
-			messages.reverse().forEach(msg => {
-				const div = document.createElement('div');
-				div.className = 'message-item';
-				div.innerHTML = `
+			function loadMessages() {
+				const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+				messagesList.innerHTML = '';
+				messages.reverse().forEach(msg => {
+					const div = document.createElement('div');
+					div.className = 'message-item';
+					div.innerHTML = `
 					<div class="message-header">
 						<span class="message-name">${msg.name}</span>
 						<span class="message-status">${msg.status}</span>
 					</div>
 					<div class="message-content">${msg.message}</div>
 				`;
-				messagesList.appendChild(div);
+					messagesList.appendChild(div);
+				});
+			}
+
+			rsvpForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const name = document.getElementById('rsvp-name').value;
+				const status = document.getElementById('rsvp-status').value;
+				const message = document.getElementById('rsvp-message').value;
+
+				const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+				messages.push({ name, status, message, date: new Date().toISOString() });
+				localStorage.setItem('wedding_messages', JSON.stringify(messages));
+
+				rsvpForm.reset();
+				loadMessages();
+
+				alert('Terima kasih atas konfirmasi dan doa Anda!');
 			});
-		}
 
-		rsvpForm.addEventListener('submit', (e) => {
-			e.preventDefault();
-			const name = document.getElementById('rsvp-name').value;
-			const status = document.getElementById('rsvp-status').value;
-			const message = document.getElementById('rsvp-message').value;
-
-			const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
-			messages.push({ name, status, message, date: new Date().toISOString() });
-			localStorage.setItem('wedding_messages', JSON.stringify(messages));
-
-			rsvpForm.reset();
-			loadMessages();
-			
-			alert('Terima kasih atas konfirmasi dan doa Anda!');
-		});
-
-		window.addEventListener('load', loadMessages);
-	</script>
+			window.addEventListener('load', loadMessages);
+		</script>
 </body>
 
 </html>
