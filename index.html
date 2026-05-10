@@ -97,6 +97,32 @@
 			overflow: hidden !important;
 		}
 
+		/* Lock Right Panel Scroll specifically */
+		body.lock-scroll .elementor-element-5482976 {
+			overflow: hidden !important;
+			height: 100vh !important;
+		}
+
+		/* Ensure Button is Clickable */
+		#wdp-button-wrapper, 
+		.wdp-button-wrapper {
+			position: relative !important;
+			z-index: 9999999 !important;
+			pointer-events: auto !important;
+		}
+
+		#wdp-button-wrapper button,
+		.wdp-button-wrapper button {
+			cursor: pointer !important;
+			pointer-events: auto !important;
+			z-index: 99999999 !important;
+		}
+
+		/* Background overlay should not block clicks */
+		.overlayy {
+			pointer-events: none !important;
+		}
+
 		.cui-comment-text img {
 			max-width: 100% !important;
 		}
@@ -6893,7 +6919,7 @@
 
 
 											<div class="wdp-button-wrapper" id="wdp-button-wrapper">
-												<button class="elementor-button">
+												<button class="elementor-button" onclick="openInvitationFallback()">
 													<span>
 														<i aria-hidden="true" class="far fa-envelope-open"></i>
 													</span>
@@ -6907,55 +6933,37 @@
 
 
 								<script>
+									// Robust Fallback for Opening Invitation
+									window.openInvitationFallback = function() {
+										if (typeof playAudio === 'function') playAudio();
+										jQuery('.modalx').addClass('removeModals');
+										setTimeout(function () {
+											jQuery('.modalx').hide();
+										}, 1200);
+										jQuery('body').removeClass('lock-scroll');
+										jQuery('body').css('overflow', 'auto');
+										window.scrollTo(0,0);
+									};
+
 									jQuery(document).ready(function ($) {
 										var sampulbg = $('.modalx').data('sampul');
 										if (sampulbg) {
-											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important;');
+											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important; z-index: 99999 !important;');
 										}
 
 										// Force lock-scroll on load
 										$('body').addClass('lock-scroll');
 
-										// Original Button Click Handler
+										// Unified Button Click Handler
 										$("#wdp-button-wrapper").on("click", "button", function () {
-											if (typeof playAudio === 'function') playAudio();
-											$('.modalx').addClass('removeModals');
-											setTimeout(function () {
-												$('.modalx').hide();
-											}, 1200);
-											$('body').removeClass('lock-scroll');
-											$('body').css('overflow', 'auto');
+											openInvitationFallback();
 										});
 									});
 								</script>
 
 
 
-								<script>
-									var isYT = false;
-									jQuery("#wdp-button-wrapper").on("click", "button", function () {
-										// var isYT = false;
-										playAudio();
-										if (document.body.contains(document.getElementById("song"))) {
-											document.getElementById("song").play();
-											isYT = false;
-										} else {
-											isYT = true;
-											player.playVideo();
-										}
-										function playAudio() {
-											var isYT = false;
-											if (document.body.contains(document.getElementById("song"))) {
-												document.getElementById("song").play();
-												isYT = false;
-											} else {
-												isYT = true;
-												player.playVideo();
-											}
-										}
 
-									});
-								</script>
 								<script>
 									// decode &amp; and \'
 									if (jQuery('.namatamu').length >= 1) {
