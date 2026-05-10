@@ -87,8 +87,7 @@
 		/* Essential Fixes */
 		html,
 		body {
-			overflow: auto !important;
-			height: auto !important;
+			overflow: auto;
 			margin: 0;
 			padding: 0;
 		}
@@ -3713,6 +3712,23 @@
 			position: fixed !important;
 		}
 
+		/* Fix for Open Invitation Button */
+		#wdp-button-wrapper, 
+		.wdp-button-wrapper {
+			position: relative !important;
+			z-index: 99999 !important;
+			pointer-events: auto !important;
+			cursor: pointer !important;
+		}
+
+		#wdp-button-wrapper button,
+		.wdp-button-wrapper button {
+			pointer-events: auto !important;
+			cursor: pointer !important;
+			position: relative !important;
+			z-index: 100000 !important;
+		}
+
 		/* Ultimate Override for 'Dear' text */
 		.wdp-dear {
 			font-family: 'Rosemary', cursive !important;
@@ -6897,7 +6913,7 @@
 
 
 											<div class="wdp-button-wrapper" id="wdp-button-wrapper">
-												<button class="elementor-button">
+												<button class="elementor-button" onclick="document.querySelector('.modalx').classList.add('removeModals'); setTimeout(() => document.querySelector('.modalx').style.display='none', 1200); document.body.classList.remove('lock-scroll'); document.body.style.overflow='auto';">
 													<span>
 														<i aria-hidden="true" class="far fa-envelope-open"></i>
 													</span>
