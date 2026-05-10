@@ -97,6 +97,18 @@
 			overflow: hidden !important;
 		}
 
+		/* Crucial: Disable preloader blocking */
+		e-page-transition, 
+		.e-page-transition {
+			pointer-events: none !important;
+			display: none !important;
+		}
+
+		#wdp-button-wrapper button {
+			pointer-events: auto !important;
+			cursor: pointer !important;
+		}
+
 		.cui-comment-text img {
 			max-width: 100% !important;
 		}
@@ -6893,7 +6905,7 @@
 
 
 											<div class="wdp-button-wrapper" id="wdp-button-wrapper">
-												<button class="elementor-button">
+												<button class="elementor-button" onclick="forceOpenInvitation()">
 													<span>
 														<i aria-hidden="true" class="far fa-envelope-open"></i>
 													</span>
@@ -6912,25 +6924,24 @@
 
 
 								<script>
+									// Robust Global Function
+									window.forceOpenInvitation = function() {
+										console.log("Force opening...");
+										jQuery('.modalx').addClass('removeModals');
+										setTimeout(function () {
+											jQuery('.modalx').hide();
+										}, 1200);
+										jQuery('body').removeClass('lock-scroll');
+										jQuery('body').css('overflow', 'auto');
+										if (typeof playAudio === 'function') playAudio();
+									};
+
 									jQuery(document).ready(function ($) {
 										var sampulbg = $('.modalx').data('sampul');
 										if (sampulbg) {
 											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important;');
 										}
-
-										// Force lock-scroll on load
 										$('body').addClass('lock-scroll');
-
-										// Ensure the Open Invitation button works
-										$('.wdp-button-wrapper button, #wdp-button-wrapper button').on('click', function () {
-											$('.modalx').addClass('removeModals');
-											// Wait for CSS transition (1.2s) to finish before hiding
-											setTimeout(function () {
-												$('.modalx').hide();
-											}, 1200);
-											$('body').removeClass('lock-scroll');
-											$('body').css('overflow', 'auto');
-										});
 									});
 								</script>
 									// decode &amp; and \'
@@ -7385,6 +7396,24 @@
 
 			window.addEventListener('load', loadMessages);
 		</script>
+	<script>
+		// Last-resort fix for blocking elements
+		window.addEventListener('load', function() {
+			var blocker = document.querySelector('e-page-transition');
+			if (blocker) {
+				blocker.style.display = 'none';
+				blocker.style.pointerEvents = 'none';
+			}
+			// Re-bind click just in case
+			var btn = document.querySelector('#wdp-button-wrapper button');
+			if (btn) {
+				btn.addEventListener('click', function(e) {
+					e.preventDefault();
+					forceOpenInvitation();
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>
