@@ -97,32 +97,6 @@
 			overflow: hidden !important;
 		}
 
-		/* Lock Right Panel Scroll specifically */
-		body.lock-scroll .elementor-element-5482976 {
-			overflow: hidden !important;
-			height: 100vh !important;
-		}
-
-		/* Ensure Button is Clickable */
-		#wdp-button-wrapper, 
-		.wdp-button-wrapper {
-			position: relative !important;
-			z-index: 9999999 !important;
-			pointer-events: auto !important;
-		}
-
-		#wdp-button-wrapper button,
-		.wdp-button-wrapper button {
-			cursor: pointer !important;
-			pointer-events: auto !important;
-			z-index: 99999999 !important;
-		}
-
-		/* Background overlay should not block clicks */
-		.overlayy {
-			pointer-events: none !important;
-		}
-
 		.cui-comment-text img {
 			max-width: 100% !important;
 		}
@@ -6919,7 +6893,7 @@
 
 
 											<div class="wdp-button-wrapper" id="wdp-button-wrapper">
-												<button class="elementor-button" onclick="openInvitationFallback()">
+												<button class="elementor-button">
 													<span>
 														<i aria-hidden="true" class="far fa-envelope-open"></i>
 													</span>
@@ -6932,39 +6906,33 @@
 								</div>
 
 
-								<script>
-									// Robust Fallback for Opening Invitation
-									window.openInvitationFallback = function() {
-										if (typeof playAudio === 'function') playAudio();
-										jQuery('.modalx').addClass('removeModals');
-										setTimeout(function () {
-											jQuery('.modalx').hide();
-										}, 1200);
-										jQuery('body').removeClass('lock-scroll');
-										jQuery('body').css('overflow', 'auto');
-										window.scrollTo(0,0);
-									};
 
+
+
+
+
+								<script>
 									jQuery(document).ready(function ($) {
 										var sampulbg = $('.modalx').data('sampul');
 										if (sampulbg) {
-											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important; z-index: 99999 !important;');
+											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important;');
 										}
 
 										// Force lock-scroll on load
 										$('body').addClass('lock-scroll');
 
-										// Unified Button Click Handler
-										$("#wdp-button-wrapper").on("click", "button", function () {
-											openInvitationFallback();
+										// Ensure the Open Invitation button works
+										$('.wdp-button-wrapper button, #wdp-button-wrapper button').on('click', function () {
+											$('.modalx').addClass('removeModals');
+											// Wait for CSS transition (1.2s) to finish before hiding
+											setTimeout(function () {
+												$('.modalx').hide();
+											}, 1200);
+											$('body').removeClass('lock-scroll');
+											$('body').css('overflow', 'auto');
 										});
 									});
 								</script>
-
-
-
-
-								<script>
 									// decode &amp; and \'
 									if (jQuery('.namatamu').length >= 1) {
 										let tmpHtmlNamatamu = document.querySelectorAll('.namatamu')
