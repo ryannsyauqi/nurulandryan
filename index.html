@@ -7512,7 +7512,7 @@
 					// Reload messages after a short delay
 					setTimeout(loadMessages, 1500);
 					
-					// Reset button after 3 seconds
+					// Reset button after 3 seconds on success
 					setTimeout(() => {
 						submitBtn.innerText = originalBtnText;
 						submitBtn.disabled = false;
@@ -7522,7 +7522,7 @@
 				} catch (error) {
 					console.error("Error submitting RSVP:", error);
 					alert("Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi.");
-				} finally {
+					// Reset button immediately on error
 					submitBtn.innerText = originalBtnText;
 					submitBtn.disabled = false;
 				}
