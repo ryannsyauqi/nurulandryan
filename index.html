@@ -7497,22 +7497,26 @@
 					submitBtn.innerText = "Mengirim...";
 					submitBtn.disabled = true;
 
-					const response = await fetch(WEB_APP_URL, {
+					await fetch(WEB_APP_URL, {
 						method: 'POST',
-						mode: 'no-cors', // Penting untuk Google Apps Script
+						mode: 'no-cors',
 						headers: {
 							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify({ name, status, message }),
 					});
 
-					// Karena no-cors, kita tidak bisa baca response body, 
-					// tapi jika tidak error berarti sukses.
 					rsvpForm.reset();
-					alert('Terima kasih atas konfirmasi dan doa Anda!');
+					submitBtn.innerText = "Terkirim!";
 					
-					// Reload messages after a short delay for Google to process
-					setTimeout(loadMessages, 2000);
+					// Reload messages after a short delay
+					setTimeout(loadMessages, 1500);
+					
+					// Reset button after 3 seconds
+					setTimeout(() => {
+						submitBtn.innerText = originalBtnText;
+						submitBtn.disabled = false;
+					}, 3000);
 					
 					messagesList.scrollTop = 0;
 				} catch (error) {
