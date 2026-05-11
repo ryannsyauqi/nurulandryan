@@ -1582,7 +1582,7 @@ body .elementor-61941 .elementor-element.elementor-element-a2b5b79 .elementor-la
     gap: 15px;
     width: 100%;
     max-width: 450px;
-    margin: 30px auto 0;
+    margin: 15px auto 0; /* Reduced from 30px */
 }
 
 .gift-item {
