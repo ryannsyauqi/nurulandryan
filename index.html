@@ -102,6 +102,79 @@
 			-ms-touch-action: none !important;
 		}
 
+		/* Preloader Styles */
+		#preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #2a2a2a;
+			z-index: 9999999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: opacity 0.5s ease, visibility 0.5s ease;
+		}
+
+		#preloader.fade-out {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		.loader-content {
+			text-align: center;
+		}
+
+		.loader-content h2 {
+			font-family: 'Rosemary', cursive !important;
+			font-size: 38px;
+			color: #fff;
+			margin-bottom: 20px;
+			font-weight: normal;
+		}
+
+		.loader-line {
+			width: 200px;
+			height: 1px;
+			background: rgba(255, 255, 255, 0.1);
+			margin: 0 auto;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.loader-line::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			animation: loading-bar 1.5s infinite ease-in-out;
+		}
+
+		@keyframes loading-bar {
+			0% {
+				left: -100%;
+			}
+
+			100% {
+				left: 100%;
+			}
+		}
+
+		/* Hide main content until loaded to prevent flash of unstyled content */
+		.elementor-61941 {
+			opacity: 0;
+			transition: opacity 0.5s ease;
+		}
+
+		.elementor-61941.loaded {
+			opacity: 1;
+		}
+
+
 		.modalx {
 			touch-action: none !important;
 		}
@@ -6149,6 +6222,13 @@
 	<noscript><img height="1" width="1" style="display:none"
 			src="https://www.facebook.com/tr?id=8704441912968957&ev=PageView&noscript=1" /></noscript>
 	<!-- End Meta Pixel Code -->
+	<div id="preloader">
+		<div class="loader-content">
+			<h2>Nurul & Ryan</h2>
+			<div class="loader-line"></div>
+		</div>
+	</div>
+
 	<div data-elementor-type="wp-page" data-elementor-id="61941" class="elementor elementor-61941"
 		data-elementor-post-type="page">
 		<div class="elementor-element elementor-element-a04b1c9 e-con-full e-flex e-con e-parent e-lazyloaded"
@@ -7685,6 +7765,31 @@
 				}
 			});
 		</script>
+	<script>
+		// Preloader Removal
+		window.addEventListener('load', function () {
+			const preloader = document.getElementById('preloader');
+			const mainContent = document.querySelector('.elementor-61941');
+
+			if (preloader) {
+				preloader.classList.add('fade-out');
+			}
+			if (mainContent) {
+				mainContent.classList.add('loaded');
+			}
+		});
+
+		// Fallback for preloader if load takes too long
+		setTimeout(function () {
+			const preloader = document.getElementById('preloader');
+			const mainContent = document.querySelector('.elementor-61941');
+			if (preloader && !preloader.classList.contains('fade-out')) {
+				preloader.classList.add('fade-out');
+				if (mainContent) mainContent.classList.add('loaded');
+			}
+		}, 8000); // 8 seconds timeout
+	</script>
 </body>
+
 
 </html>
