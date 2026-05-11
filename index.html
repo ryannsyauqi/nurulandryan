@@ -3719,7 +3719,7 @@
 	<link rel="stylesheet" id="widget-form-css" href="/assets/widget-form.min.css" media="all">
 	<link rel="stylesheet" id="widget-social-icons-css" href="/assets/widget-social-icons.min.css" media="all">
 	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/custom-apple-webkit.min.css" media="all">
-	<link rel="stylesheet" id="elementor-post-61941-css" href="/assets/post-61941.css?v=21" media="all">
+	<link rel="stylesheet" id="elementor-post-61941-css" href="/assets/post-61941.css?v=24" media="all">
 	<style>
 		/* Ultimate Override for 'Dear' text */
 		.wdp-dear {
@@ -3751,6 +3751,7 @@
 
 		/* Mobile Heading Size Overrides */
 		@media (max-width: 768px) {
+
 			.elementor-element-799dafa .elementor-heading-title,
 			.elementor-element-684dde2 .elementor-heading-title,
 			.elementor-element-1eb54f9 .elementor-heading-title,
@@ -3906,12 +3907,27 @@
 		/* RSVP Section Styles */
 		.rsvp-section {
 			padding: 80px 20px;
-			background-color: #000;
+			background-image: url('/assets/images/rsvp-and-wishes-bg.avif');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
 			color: #fff;
 			text-align: center;
 			position: relative;
 			z-index: 10;
 			pointer-events: auto !important;
+		}
+
+		.rsvp-section::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.6); /* Subtle overlay for readability */
+			z-index: -1;
 		}
 
 		.rsvp-title {
@@ -6596,10 +6612,7 @@
 					data-id="1aa29f0" data-element_type="container"
 					data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"
 					style="background-image: url('/assets/images/gallery-3.avif') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; position: relative;">
-					<!-- Add dark overlay so the white text is readable against the background -->
-					<div
-						style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 0;">
-					</div>
+					<!-- Dark overlay removed as requested -->
 					<div class="e-con-inner" style="position: relative; z-index: 1;">
 						<div class="elementor-element elementor-element-title-moments animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
 							data-id="title-moments" data-element_type="widget"
