@@ -111,7 +111,7 @@
 		}
 
 		/* Crucial: Disable preloader blocking */
-		e-page-transition, 
+		e-page-transition,
 		.e-page-transition {
 			pointer-events: none !important;
 			display: none !important;
@@ -2146,8 +2146,7 @@
 			margin-bottom: 0;
 		}
 
-		.site .ast-author-avatar {
-		}
+		.site .ast-author-avatar {}
 
 		a.ast-underline-text {
 			text-decoration: underline;
@@ -3622,14 +3621,11 @@
 			color: #ffffff;
 		}
 
-		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cui-rating-positive {
-		}
+		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cui-rating-positive {}
 
-		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cui-rating-negative {
-		}
+		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cui-rating-negative {}
 
-		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cuio-loading {
-		}
+		.cui-wrapper ul.cui-container-comments li.cui-item-comment .cui-comment-content .cui-comment-rating .cui-rating-count.cuio-loading {}
 
 		.cui-wrapper ul.cui-container-comments a.cui-load-more-comments:hover {
 			color: #ffffff;
@@ -3721,8 +3717,6 @@
 	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/custom-apple-webkit.min.css" media="all">
 	<link rel="stylesheet" id="elementor-post-61941-css" href="/assets/post-61941.css?v=11" media="all">
 	<style>
-
-
 		/* Ultimate Override for 'Dear' text */
 		.wdp-dear {
 			font-family: 'Rosemary', cursive !important;
@@ -3880,11 +3874,14 @@
 			background-color: #000;
 			color: #fff;
 			text-align: center;
+			position: relative;
+			z-index: 10;
+			pointer-events: auto !important;
 		}
 
 		.rsvp-title {
 			font-family: 'Cormorant', serif !important;
-			font-size: 2.5rem !important;
+			font-size: 36px !important;
 			margin-bottom: 15px;
 			color: #ffffff;
 			text-align: center;
@@ -3939,6 +3936,9 @@
 			font-size: 14px;
 			outline: none;
 			transition: all 0.3s ease;
+			position: relative;
+			z-index: 11;
+			pointer-events: auto !important;
 		}
 
 		.rsvp-input:focus,
@@ -3977,14 +3977,28 @@
 
 		.rsvp-messages {
 			max-width: 500px;
-			margin: 0 auto;
+			margin: 30px auto 0;
 			text-align: left;
-			max-height: 400px;
+			height: 400px;
 			overflow-y: auto;
+			padding-right: 15px;
 		}
 
 		.rsvp-messages::-webkit-scrollbar {
-			width: 2px;
+			width: 3px;
+		}
+
+		.rsvp-messages::-webkit-scrollbar-track {
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		.rsvp-messages::-webkit-scrollbar-thumb {
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 10px;
+		}
+
+		.rsvp-messages::-webkit-scrollbar-thumb:hover {
+			background: rgba(255, 255, 255, 0.4);
 		}
 
 		.message-item {
@@ -4013,8 +4027,9 @@
 		}
 
 		.message-name {
-			font-family: 'Rosemary', Sans-serif !important;
-			font-size: 1.2rem;
+			font-family: 'Cormorant', serif !important;
+			font-size: 1.1rem;
+			font-weight: 600;
 			color: #fff;
 			margin-bottom: 5px;
 			display: block;
@@ -4036,14 +4051,13 @@
 
 		@media (max-width: 767px) {
 			.rsvp-title {
-				font-size: 2rem !important;
+				font-size: 36px !important;
 			}
 		}
 	</style>
 	<link rel="stylesheet" id="elementor-gf-local-roboto-css" href="/assets/roboto.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-robotoslab-css" href="/assets/robotoslab.css" media="all">
-	<link rel="stylesheet" id="elementor-gf-local-cormorantupright-css" href="/assets/cormorantupright.css"
-		media="all">
+	<link rel="stylesheet" id="elementor-gf-local-cormorantupright-css" href="/assets/cormorantupright.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-jost-css" href="/assets/jost.css" media="all">
 	<link rel="stylesheet" id="elementor-gf-local-poppins-css" href="/assets/poppins.css" media="all">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" id="jquery-core-js"></script>
@@ -6452,12 +6466,14 @@
 						<div class="elementor-element elementor-element-bb1649e animated-slow elementor-widget elementor-widget-image animated fadeInUp"
 							data-id="bb1649e" data-element_type="widget"
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-							data-widget_type="image.default" style="margin-bottom: 0 !important; padding: 0 !important;">
-							<div class="elementor-widget-container" style="margin: 0 !important; padding: 0 !important; display: flex; justify-content: center;">
+							data-widget_type="image.default"
+							style="margin-bottom: 0 !important; padding: 0 !important;">
+							<div class="elementor-widget-container"
+								style="margin: 0 !important; padding: 0 !important; display: flex; justify-content: center;">
 								<img fetchpriority="high" decoding="async"
 									style="width: 120px; height: auto; object-fit: contain; margin: 0 !important; display: block;"
-									src="/assets/Logo%20NR%20Wedding.svg" class="attachment-full size-full wp-image-61969"
-									alt="Logo NR">
+									src="/assets/Logo%20NR%20Wedding.svg"
+									class="attachment-full size-full wp-image-61969" alt="Logo NR">
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-9da77da animated-slow elementor-widget elementor-widget-heading animated fadeInUp"
@@ -6674,8 +6690,8 @@
 				</div>
 				<section id="rsvp" class="rsvp-section">
 					<div class="rsvp-container">
-						<h2 class="rsvp-title">RSVP</h2>
-						<p class="rsvp-subtitle">Konfirmasi Kehadiran & Ucapan Doa</p>
+						<h2 class="rsvp-title">RSVP and Wishes</h2>
+						<p class="rsvp-subtitle">Konfirmasi Kehadiran & Tulis Ucapan dan Doa kepada Kami</p>
 
 						<form id="rsvp-form" class="rsvp-form">
 							<div class="rsvp-form-group">
@@ -6945,7 +6961,7 @@
 
 								<script>
 									// Robust Global Function
-									window.forceOpenInvitation = function() {
+									window.forceOpenInvitation = function () {
 										console.log("Force opening...");
 										jQuery('.modalx').addClass('removeModals');
 										setTimeout(function () {
@@ -7271,36 +7287,36 @@
 				currentImgIdx = idx;
 				const lightbox = document.getElementById('momentsLightbox');
 				updateLightboxContent();
-				
+
 				// Robust Scroll Lock
 				const scrollY = window.scrollY || window.pageYOffset;
 				document.body.style.position = 'fixed';
 				document.body.style.top = `-${scrollY}px`;
 				document.body.style.width = '100%';
 				document.body.style.overflow = 'hidden';
-				
+
 				lightbox.classList.add('active');
 			}
 
 			function closeLightbox() {
 				const lightbox = document.getElementById('momentsLightbox');
 				lightbox.classList.remove('active');
-				
+
 				// Restore Scroll Position
 				const scrollY = document.body.style.top;
-				
+
 				// Disable smooth scroll temporarily to prevent jump animation
 				const htmlElement = document.documentElement;
 				const originalScrollBehavior = htmlElement.style.scrollBehavior;
 				htmlElement.style.scrollBehavior = 'auto';
-				
+
 				document.body.style.position = '';
 				document.body.style.top = '';
 				document.body.style.width = '';
 				document.body.style.overflow = '';
-				
+
 				window.scrollTo(0, parseInt(scrollY || '0') * -1);
-				
+
 				// Restore original scroll behavior
 				htmlElement.style.scrollBehavior = originalScrollBehavior;
 			}
@@ -7414,18 +7430,27 @@
 			const messagesList = document.getElementById('rsvp-messages-list');
 
 			function loadMessages() {
-				const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+				const allMessages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
+				// Sort by date descending
+				const sortedMessages = allMessages.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+				// Render messages
 				messagesList.innerHTML = '';
-				messages.reverse().forEach(msg => {
+				if (sortedMessages.length === 0) {
+					messagesList.innerHTML = '<p style="text-align: center; opacity: 0.5; font-size: 13px; margin-top: 20px;">Belum ada ucapan.</p>';
+					return;
+				}
+
+				sortedMessages.forEach(msg => {
 					const div = document.createElement('div');
 					div.className = 'message-item';
 					div.innerHTML = `
-					<div class="message-header">
-						<span class="message-name">${msg.name}</span>
-						<span class="message-status">${msg.status}</span>
-					</div>
-					<div class="message-content">${msg.message}</div>
-				`;
+						<div class="message-header">
+							<span class="message-name">${msg.name}</span>
+							<span class="message-status">${msg.status}</span>
+						</div>
+						<div class="message-content">${msg.message}</div>
+					`;
 					messagesList.appendChild(div);
 				});
 			}
@@ -7437,35 +7462,43 @@
 				const message = document.getElementById('rsvp-message').value;
 
 				const messages = JSON.parse(localStorage.getItem('wedding_messages') || '[]');
-				messages.push({ name, status, message, date: new Date().toISOString() });
+				messages.push({
+					name,
+					status,
+					message,
+					date: new Date().toISOString()
+				});
 				localStorage.setItem('wedding_messages', JSON.stringify(messages));
 
 				rsvpForm.reset();
 				loadMessages();
+
+				// Scroll the messages list to the top to show the new message
+				messagesList.scrollTop = 0;
 
 				alert('Terima kasih atas konfirmasi dan doa Anda!');
 			});
 
 			window.addEventListener('load', loadMessages);
 		</script>
-	<script>
-		// Last-resort fix for blocking elements
-		window.addEventListener('load', function() {
-			var blocker = document.querySelector('e-page-transition');
-			if (blocker) {
-				blocker.style.display = 'none';
-				blocker.style.pointerEvents = 'none';
-			}
-			// Re-bind click just in case
-			var btn = document.querySelector('#wdp-button-wrapper button');
-			if (btn) {
-				btn.addEventListener('click', function(e) {
-					e.preventDefault();
-					forceOpenInvitation();
-				});
-			}
-		});
-	</script>
+		<script>
+			// Last-resort fix for blocking elements
+			window.addEventListener('load', function () {
+				var blocker = document.querySelector('e-page-transition');
+				if (blocker) {
+					blocker.style.display = 'none';
+					blocker.style.pointerEvents = 'none';
+				}
+				// Re-bind click just in case
+				var btn = document.querySelector('#wdp-button-wrapper button');
+				if (btn) {
+					btn.addEventListener('click', function (e) {
+						e.preventDefault();
+						forceOpenInvitation();
+					});
+				}
+			});
+		</script>
 </body>
 
 </html>
