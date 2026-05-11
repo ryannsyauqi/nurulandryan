@@ -95,6 +95,15 @@
 
 		body.lock-scroll {
 			overflow: hidden !important;
+			position: fixed !important;
+			width: 100% !important;
+			height: 100% !important;
+			touch-action: none !important;
+			-ms-touch-action: none !important;
+		}
+
+		.modalx {
+			touch-action: none !important;
 		}
 
 		/* Crucial: Disable preloader blocking */
@@ -5626,8 +5635,8 @@
 </head>
 
 <body
-	class="wp-singular page-template page-template-elementor_canvas page page-id-61941 wp-custom-logo wp-embed-responsive wp-theme-astra ast-page-builder-template ast-no-sidebar astra-4.11.15 group-blog ast-single-post ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-61941 e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit dialog-body dialog-lightbox-body dialog-container dialog-lightbox-container ast-desktop"
-	style="overflow: auto;" data-elementor-device-mode="desktop">
+	class="wp-singular page-template page-template-elementor_canvas page page-id-61941 wp-custom-logo wp-embed-responsive wp-theme-astra ast-page-builder-template ast-no-sidebar astra-4.11.15 group-blog ast-single-post ast-inherit-site-logo-transparent ast-hfb-header ast-full-width-primary-header elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-61941 e--ua-blink e--ua-chrome e--ua-mac e--ua-webkit dialog-body dialog-lightbox-body dialog-container dialog-lightbox-container ast-desktop lock-scroll"
+	style="overflow: hidden;" data-elementor-device-mode="desktop">
 	<style type="text/css">
 		#loading-screen,
 		.loading,
@@ -6849,10 +6858,21 @@
 									window.addEventListener("load", () => {
 										if (audioElement) {
 											audioElement.play().catch((err) => {
-												console.log("Error saat mencoba memutar audio saat halaman dimuat:", err);
+												console.log("Autoplay blocked, waiting for interaction.");
 											});
 										}
 									});
+
+									// Global interaction listener to trigger audio on mobile
+									const triggerAudio = () => {
+										if (audioElement && audioElement.paused) {
+											audioElement.play().catch(e => console.log("Still blocked"));
+										}
+										document.removeEventListener('click', triggerAudio);
+										document.removeEventListener('touchstart', triggerAudio);
+									};
+									document.addEventListener('click', triggerAudio);
+									document.addEventListener('touchstart', triggerAudio);
 
 								</script>
 
@@ -6927,7 +6947,13 @@
 											jQuery('.modalx').hide();
 										}, 1200);
 										jQuery('body').removeClass('lock-scroll');
-										jQuery('body').css('overflow', 'auto');
+										jQuery('body').css({
+											'overflow': 'auto',
+											'position': 'static',
+											'width': 'auto',
+											'height': 'auto',
+											'touch-action': 'auto'
+										});
 										if (typeof playAudio === 'function') playAudio();
 									};
 
@@ -6937,6 +6963,7 @@
 											$('.modalx').attr('style', 'background-image: url(' + sampulbg + ') !important;');
 										}
 										$('body').addClass('lock-scroll');
+										window.scrollTo(0, 0);
 									});
 
 									// decode &amp; and \'
