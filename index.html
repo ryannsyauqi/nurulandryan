@@ -186,6 +186,10 @@
 			transition: all 0.3s ease;
 			z-index: 10001;
 			text-decoration: none !important;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+			outline: none;
 		}
 
 		.moments-download-btn:hover {
@@ -3715,7 +3719,7 @@
 	<link rel="stylesheet" id="widget-form-css" href="/assets/widget-form.min.css" media="all">
 	<link rel="stylesheet" id="widget-social-icons-css" href="/assets/widget-social-icons.min.css" media="all">
 	<link rel="stylesheet" id="e-apple-webkit-css" href="/assets/custom-apple-webkit.min.css" media="all">
-	<link rel="stylesheet" id="elementor-post-61941-css" href="/assets/post-61941.css?v=11" media="all">
+	<link rel="stylesheet" id="elementor-post-61941-css" href="/assets/post-61941.css?v=21" media="all">
 	<style>
 		/* Ultimate Override for 'Dear' text */
 		.wdp-dear {
@@ -3731,10 +3735,41 @@
 			text-transform: none !important;
 		}
 
+		/* Heading Size Overrides (Synchronized with cover modal) */
+		.elementor-element-799dafa .elementor-heading-title,
+		.elementor-element-684dde2 .elementor-heading-title,
+		.elementor-element-1eb54f9 .elementor-heading-title,
+		.wdp-txt-the-wedding {
+			font-size: 44px !important;
+		}
+
+		.elementor-element-3b53957 .elementor-heading-title,
+		.elementor-element-fae2e4a .elementor-heading-title,
+		.wdp-mempelai {
+			font-size: 56px !important;
+		}
+
+		/* Mobile Heading Size Overrides */
+		@media (max-width: 768px) {
+			.elementor-element-799dafa .elementor-heading-title,
+			.elementor-element-684dde2 .elementor-heading-title,
+			.elementor-element-1eb54f9 .elementor-heading-title,
+			.wdp-txt-the-wedding {
+				font-size: 34px !important;
+			}
+
+			.elementor-element-3b53957 .elementor-heading-title,
+			.elementor-element-fae2e4a .elementor-heading-title,
+			.wdp-mempelai {
+				font-size: 48px !important;
+			}
+		}
+
+
 		.wdp-dear-sub {
 			font-family: 'Cormorant', serif !important;
 			font-size: 18px !important;
-			margin: 0 0 10px 0 !important;
+			margin: 0 0 4px 0 !important;
 			padding: 0 !important;
 			line-height: 1.2 !important;
 			text-align: center !important;
@@ -6920,11 +6955,11 @@
 											<div class="elementor-image img"
 												style="text-align: center; margin-top: -72px;">
 												<img src="/assets/Logo%20NR%20Wedding.svg"
-													style="width: 85px; margin-bottom: -10px; display: inline-block; filter: brightness(0) invert(1);">
+													style="width: 85px; margin-bottom: 40px; display: inline-block; filter: brightness(0) invert(1);">
 											</div>
 
 											<div class="wdp-txt-the-wedding"
-												style="width:auto !important; margin-bottom: 5px !important; margin-top: 0px; line-height: 0.6 !important;">
+												style="width:auto !important; margin-bottom: 8px !important; margin-top: 0px; line-height: 0.6 !important;">
 												The
 												Wedding
 												of </div>
@@ -7255,11 +7290,11 @@
 			</div>
 			<div class="moments-lightbox-content">
 				<img id="lightboxImg" src="" alt="Moment">
-				<a id="downloadBtn" class="moments-download-btn" href="" download>
+				<button id="downloadBtn" class="moments-download-btn" type="button" title="Download Image">
 					<svg viewBox="0 0 24 24" width="24" height="24">
 						<path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
 					</svg>
-				</a>
+				</button>
 				<div class="moments-lightbox-nav">
 					<div class="moments-lightbox-btn" onclick="prevImage()">&#10094;</div>
 					<div class="moments-lightbox-btn" onclick="nextImage()">&#10095;</div>
@@ -7336,33 +7371,66 @@
 
 			async function updateLightboxContent() {
 				const lightboxImg = document.getElementById('lightboxImg');
-				const downloadBtn = document.getElementById('downloadBtn');
 				const imgSrc = galleryImages[currentImgIdx];
-
 				lightboxImg.src = imgSrc;
-				downloadBtn.href = imgSrc;
-				downloadBtn.download = `nurul-ryan-wedding-${currentImgIdx + 1}.avif`;
-
-				// Ensure download works without leaving page
-				downloadBtn.onclick = async (e) => {
-					e.preventDefault();
-					try {
-						const response = await fetch(imgSrc);
-						const blob = await response.blob();
-						const url = window.URL.createObjectURL(blob);
-						const a = document.createElement('a');
-						a.href = url;
-						a.download = downloadBtn.download;
-						document.body.appendChild(a);
-						a.click();
-						window.URL.revokeObjectURL(url);
-						document.body.removeChild(a);
-					} catch (error) {
-						console.error('Download failed:', error);
-						window.open(imgSrc, '_blank');
-					}
-				};
 			}
+
+			// Robust Download Logic
+			document.getElementById('downloadBtn').addEventListener('click', async function () {
+				const imgSrc = galleryImages[currentImgIdx];
+				const fileName = `nurul-ryan-wedding-${currentImgIdx + 1}.avif`;
+				const btn = this;
+
+				// Visual feedback
+				const originalHTML = btn.innerHTML;
+				btn.innerHTML = '<svg class="animate-spin" viewBox="0 0 24 24" width="24" height="24" style="animation: spin 1s linear infinite;"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+				btn.disabled = true;
+
+				try {
+					const response = await fetch(imgSrc);
+					if (!response.ok) throw new Error('Network response was not ok');
+					const blob = await response.blob();
+					const url = window.URL.createObjectURL(blob);
+					const a = document.createElement('a');
+					a.style.display = 'none';
+					a.href = url;
+					a.download = fileName;
+					document.body.appendChild(a);
+					a.click();
+
+					setTimeout(() => {
+						document.body.removeChild(a);
+						window.URL.revokeObjectURL(url);
+					}, 100);
+
+					// Success feedback
+					btn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/></svg>';
+				} catch (error) {
+					console.error('Download failed:', error);
+					// Fallback to direct link in new tab if fetch fails
+					const a = document.createElement('a');
+					a.href = imgSrc;
+					a.target = '_blank';
+					a.download = fileName;
+					a.click();
+					btn.innerHTML = originalHTML;
+				} finally {
+					setTimeout(() => {
+						btn.innerHTML = originalHTML;
+						btn.disabled = false;
+					}, 2000);
+				}
+			});
+
+			// Add spin animation style
+			const style = document.createElement('style');
+			style.textContent = `
+				@keyframes spin {
+					from { transform: rotate(0deg); }
+					to { transform: rotate(360deg); }
+				}
+			`;
+			document.head.appendChild(style);
 
 			// Auto-slide and Dots functionality
 			const scrollTrack = document.querySelector('.moments-scroll-track');
