@@ -7453,17 +7453,25 @@
 					}
 
 					sortedMessages.forEach(msg => {
+						// Deteksi nama (handle berbagai kemungkinan header)
+						const name = msg.name || msg.nama || msg.nama_lengkap || msg["nama lengkap"] || 'Anonim';
+						// Deteksi pesan (handle berbagai kemungkinan header)
+						const content = msg.message || msg.message || msg.ucapan || msg.pesan || msg.doa || '';
+						// Deteksi status
+						const status = msg.status || msg.konfirmasi || '';
+
 						const div = document.createElement('div');
 						div.className = 'message-item';
 						div.innerHTML = `
 							<div class="message-header">
-								<span class="message-name">${msg.name || 'Anonim'}</span>
-								<span class="message-status">${msg.status || ''}</span>
+								<span class="message-name">${name}</span>
+								<span class="message-status">${status}</span>
 							</div>
-							<div class="message-content">${msg.message || ''}</div>
+							<div class="message-content">${content}</div>
 						`;
 						messagesList.appendChild(div);
 					});
+					console.log("Data diterima dari Google Sheets:", allMessages);
 				} catch (error) {
 					console.error("Error loading messages:", error);
 					messagesList.innerHTML = '<p style="text-align: center; opacity: 0.5; font-size: 13px; margin-top: 20px;">Gagal memuat ucapan.</p>';
