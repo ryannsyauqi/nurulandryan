@@ -42,7 +42,8 @@
 }
 
 .elementor-61941 .elementor-element.elementor-element-799dafa>.elementor-widget-container {
-    margin: 0px 0px 8px 0px; /* Synchronized with cover modal */
+    margin: 0px 0px 8px 0px;
+    /* Synchronized with cover modal */
     padding: 0% 0% 0% 0%;
 }
 
@@ -52,7 +53,8 @@
 
 .elementor-61941 .elementor-element.elementor-element-799dafa .elementor-heading-title {
     font-family: "Rosemary", Sans-serif;
-    font-size: 44px; /* Synchronized with cover modal */
+    font-size: 44px;
+    /* Synchronized with cover modal */
     color: #FFFFFF;
 }
 
@@ -66,7 +68,8 @@
 
 .elementor-61941 .elementor-element.elementor-element-3b53957 .elementor-heading-title {
     font-family: "Cormorant Upright", Sans-serif;
-    font-size: 56px; /* Synchronized with cover modal */
+    font-size: 56px;
+    /* Synchronized with cover modal */
     color: #FFFFFF;
 }
 
@@ -1582,7 +1585,8 @@ body .elementor-61941 .elementor-element.elementor-element-a2b5b79 .elementor-la
     gap: 15px;
     width: 100%;
     max-width: 450px;
-    margin: 15px auto 0; /* Reduced from 30px */
+    margin: 15px auto 0;
+    /* Reduced from 30px */
 }
 
 .gift-item {
@@ -1746,6 +1750,6 @@ body .elementor-61941 .elementor-element.elementor-element-a2b5b79 .elementor-la
 .elementor-61941 .elementor-element.elementor-element-7a7f03e .wdp-dear {
     font-family: "Rosemary", cursive !important;
     font-size: 48px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 8px !important;
     line-height: 1.2 !important;
 }
