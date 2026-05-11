@@ -106,6 +106,10 @@
 			touch-action: none !important;
 		}
 
+		body.lightbox-open {
+			overflow: hidden !important;
+		}
+
 		/* Crucial: Disable preloader blocking */
 		e-page-transition, 
 		.e-page-transition {
@@ -252,8 +256,8 @@
 		.moments-scroll-container {
 			margin-top: 6px !important;
 			/* Consistent 6px gap */
-			margin-bottom: 100px !important;
-			/* Requested margin */
+			margin-bottom: 80px !important;
+			/* Balanced margin */
 			padding-bottom: 20px !important;
 			width: 100% !important;
 			overflow: hidden !important;
@@ -332,6 +336,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			touch-action: none;
 		}
 
 		.moments-lightbox.active {
@@ -6543,7 +6548,7 @@
 							data-id="title-moments" data-element_type="widget"
 							data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 							data-widget_type="heading.default"
-							style="text-align: center; width: 100%; margin-top: 100px; padding-top: 30px;">
+							style="text-align: center; width: 100%; margin-top: 80px; padding-top: 0px;">
 							<div class="elementor-widget-container" style="text-align: center;">
 								<h2 class="elementor-heading-title elementor-size-default"
 									style="text-align: center; color: #ffffff; font-size: 2.5rem;">
@@ -7266,13 +7271,38 @@
 				currentImgIdx = idx;
 				const lightbox = document.getElementById('momentsLightbox');
 				updateLightboxContent();
-				lightbox.classList.add('active');
+				
+				// Robust Scroll Lock
+				const scrollY = window.scrollY || window.pageYOffset;
+				document.body.style.position = 'fixed';
+				document.body.style.top = `-${scrollY}px`;
+				document.body.style.width = '100%';
 				document.body.style.overflow = 'hidden';
+				
+				lightbox.classList.add('active');
 			}
 
 			function closeLightbox() {
-				document.getElementById('momentsLightbox').classList.remove('active');
-				document.body.style.overflow = 'auto';
+				const lightbox = document.getElementById('momentsLightbox');
+				lightbox.classList.remove('active');
+				
+				// Restore Scroll Position
+				const scrollY = document.body.style.top;
+				
+				// Disable smooth scroll temporarily to prevent jump animation
+				const htmlElement = document.documentElement;
+				const originalScrollBehavior = htmlElement.style.scrollBehavior;
+				htmlElement.style.scrollBehavior = 'auto';
+				
+				document.body.style.position = '';
+				document.body.style.top = '';
+				document.body.style.width = '';
+				document.body.style.overflow = '';
+				
+				window.scrollTo(0, parseInt(scrollY || '0') * -1);
+				
+				// Restore original scroll behavior
+				htmlElement.style.scrollBehavior = originalScrollBehavior;
 			}
 
 			function nextImage() {
